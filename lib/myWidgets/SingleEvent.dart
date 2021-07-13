@@ -49,7 +49,7 @@ class SingleEvent extends StatelessWidget {
                       image: AssetImage(image),
                       fit: BoxFit.cover,
                       width: width,
-                      height: width * 0.55,
+                      height: width * 0.6,
                     ),
                   ),
                   Positioned(
