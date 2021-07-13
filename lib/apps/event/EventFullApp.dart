@@ -8,6 +8,7 @@ import 'package:flutkit/screens/EventHomeScreen.dart';
 import 'package:flutkit/apps/event/EventProfileScreen.dart';
 import 'package:flutkit/apps/event/EventTicketScreen.dart';
 import 'package:flutkit/apps/event/EventUpcomingScreen.dart';
+import 'package:flutkit/screens/QuizPage.dart';
 import 'package:flutkit/widgets/custom/MyBottomNavigation.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -17,6 +18,8 @@ import '../../AppNotifier.dart';
 import '../../AppTheme.dart';
 
 class EventFullApp extends StatefulWidget {
+  final int index;
+  EventFullApp({this.index = 0});
   @override
   _EventFullAppState createState() => _EventFullAppState();
 }
@@ -25,8 +28,11 @@ class _EventFullAppState extends State<EventFullApp>
     with SingleTickerProviderStateMixin {
   late ThemeData themeData;
   late CustomAppTheme customAppTheme;
+  int numberVisited = 0;
 
   Widget build(BuildContext context) {
+    numberVisited++;
+    print("number $numberVisited");
     return Consumer<AppNotifier>(
       builder: (BuildContext context, AppNotifier value, Widget? child) {
         themeData = AppTheme.getThemeFromThemeMode(value.themeMode());
@@ -36,26 +42,29 @@ class _EventFullAppState extends State<EventFullApp>
             MdiIcons.homeOutline,
             // MdiIcons.plus,
             MdiIcons.graphOutline,
+            MdiIcons.shieldOutline,
             //MdiIcons.accountOutline,
           ],
           activeIcons: [
             MdiIcons.home,
             //MdiIcons.plus,
             MdiIcons.graph,
+            MdiIcons.shield,
             //MdiIcons.account,
           ],
           screens: [
             EventHomeScreen(),
             // EventCreateScreen(),
             EventUpcomingScreen(),
+            QuizPage(),
             // EventProfileScreen(),
           ],
-          titles: ["Home", "Timeline"],
+          titles: ["Home", "Timeline", "Z.E.U.S Quiz"],
           color: themeData.colorScheme.onBackground,
           activeColor: themeData.colorScheme.primary,
           navigationBackground: customAppTheme.bgLayer1,
           brandTextColor: themeData.colorScheme.onBackground,
-          initialIndex: 0,
+          initialIndex: widget.index,
           verticalDividerColor: customAppTheme.border2,
           bottomNavigationElevation: 8,
         );
