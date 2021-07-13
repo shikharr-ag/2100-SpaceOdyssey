@@ -1,3 +1,6 @@
+import 'package:flutkit/myWidgets/ClimateBody.dart';
+import 'package:flutkit/myWidgets/WarfareBody.dart';
+import 'package:flutkit/myWidgets/allBody.dart';
 import 'package:flutkit/style/MyCard.dart';
 import 'package:flutkit/style/MyContainer.dart';
 import 'package:flutkit/utils/SizeConfig.dart';
@@ -6,9 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../AppNotifier.dart';
-import '../../AppTheme.dart';
-import 'EventSingleEventScreen.dart';
+import '../AppNotifier.dart';
+import '../AppTheme.dart';
+import '../apps/event/EventSingleEventScreen.dart';
 
 class EventHomeScreen extends StatefulWidget {
   @override
@@ -46,7 +49,11 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Today 24 Aug, 2020",
+                                // "Today " +
+                                //     DateTime.now()
+                                //         .toIso8601String()
+                                //         .substring(0, 10),
+                                "Welcome, Guardians.",
                                 style: AppTheme.getTextStyle(
                                     themeData.textTheme.bodyText2,
                                     fontWeight: 500,
@@ -55,7 +62,7 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
                               ),
                               Container(
                                 child: Text(
-                                  "Discover Events",
+                                  "Century in Glimpse",
                                   style: AppTheme.getTextStyle(
                                       themeData.textTheme.headline5,
                                       fontSize: 24,
@@ -92,83 +99,83 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
                             )
                           ],
                         ),
-                        Spacing.width(16),
-                        ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          child: Image(
-                            image: AssetImage('./assets/images/avatar-2.jpg'),
-                            width: 32,
-                            height: 32,
-                          ),
-                        )
+                        // Spacing.width(16),
+                        // ClipRRect(
+                        //   borderRadius: BorderRadius.all(Radius.circular(8)),
+                        //   child: Image(
+                        //     image: AssetImage('./assets/images/avatar-2.jpg'),
+                        //     width: 32,
+                        //     height: 32,
+                        //   ),
+                        // )
                       ],
                     ),
                     Spacing.height(16),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: MyContainer.bordered(
-                            padding: Spacing.all(6),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: Spacing.left(12),
-                                  child: Icon(
-                                    MdiIcons.magnify,
-                                    color: themeData.colorScheme.onBackground
-                                        .withAlpha(200),
-                                    size: 16,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    margin: Spacing.left(12),
-                                    child: TextFormField(
-                                      style: AppTheme.getTextStyle(
-                                          themeData.textTheme.bodyText2,
-                                          color: themeData
-                                              .colorScheme.onBackground,
-                                          fontWeight: 500),
-                                      decoration: InputDecoration(
-                                        fillColor: customAppTheme.bgLayer1,
-                                        hintStyle: AppTheme.getTextStyle(
-                                            themeData.textTheme.bodyText2,
-                                            color: themeData
-                                                .colorScheme.onBackground,
-                                            muted: true,
-                                            fontWeight: 500),
-                                        hintText: "Find Events...",
-                                        border: InputBorder.none,
-                                        enabledBorder: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        isDense: true,
-                                      ),
-                                      textCapitalization:
-                                          TextCapitalization.sentences,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Spacing.width(16),
-                        InkWell(
-                          onTap: () {
-                            _scaffoldKey.currentState!.openEndDrawer();
-                          },
-                          child: MyContainer(
-                            paddingAll: 8,
-                            color: themeData.colorScheme.primary,
-                            child: Icon(
-                              MdiIcons.tune,
-                              size: 20,
-                              color: themeData.colorScheme.onPrimary,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    //Row(
+                    //children: [
+                    // Expanded(
+                    //   child: MyContainer.bordered(
+                    //     padding: Spacing.all(6),
+                    //     child: Row(
+                    //       children: [
+                    //         Container(
+                    //           margin: Spacing.left(12),
+                    //           child: Icon(
+                    //             MdiIcons.magnify,
+                    //             color: themeData.colorScheme.onBackground
+                    //                 .withAlpha(200),
+                    //             size: 16,
+                    //           ),
+                    //         ),
+                    //         Expanded(
+                    //           child: Container(
+                    //             margin: Spacing.left(12),
+                    //             child: TextFormField(
+                    //               style: AppTheme.getTextStyle(
+                    //                   themeData.textTheme.bodyText2,
+                    //                   color: themeData
+                    //                       .colorScheme.onBackground,
+                    //                   fontWeight: 500),
+                    //               decoration: InputDecoration(
+                    //                 fillColor: customAppTheme.bgLayer1,
+                    //                 hintStyle: AppTheme.getTextStyle(
+                    //                     themeData.textTheme.bodyText2,
+                    //                     color: themeData
+                    //                         .colorScheme.onBackground,
+                    //                     muted: true,
+                    //                     fontWeight: 500),
+                    //                 hintText: "Find Events...",
+                    //                 border: InputBorder.none,
+                    //                 enabledBorder: InputBorder.none,
+                    //                 focusedBorder: InputBorder.none,
+                    //                 isDense: true,
+                    //               ),
+                    //               textCapitalization:
+                    //                   TextCapitalization.sentences,
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
+                    //Spacing.width(16),
+                    // InkWell(
+                    //   onTap: () {
+                    //     _scaffoldKey.currentState!.openEndDrawer();
+                    //   },
+                    //   child: MyContainer(
+                    //     paddingAll: 8,
+                    //     color: themeData.colorScheme.primary,
+                    //     child: Icon(
+                    //       MdiIcons.tune,
+                    //       size: 20,
+                    //       color: themeData.colorScheme.onPrimary,
+                    //     ),
+                    //   ),
+                    // ),
+                    //],
+                    //),
                     Container(
                       padding: Spacing.y(16),
                       child: SingleChildScrollView(
@@ -181,102 +188,32 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
                                 index: 0),
                             Spacing.width(16),
                             singleCategory(
-                                title: "Birthday",
-                                iconData: MdiIcons.cakeVariant,
+                                title: "World Economy",
+                                iconData: MdiIcons.cash,
                                 index: 1),
                             Spacing.width(16),
                             singleCategory(
-                                title: "Party",
-                                iconData: MdiIcons.partyPopper,
+                                title: "Societal Guidelines",
+                                iconData: MdiIcons.naturePeople,
                                 index: 2),
                             Spacing.width(16),
                             singleCategory(
-                                title: "Talks",
-                                iconData: MdiIcons.chatOutline,
+                                title: "Warfare",
+                                iconData: MdiIcons.sword,
                                 index: 3),
                             Spacing.width(16),
                             singleCategory(
-                                title: "Food",
-                                iconData: MdiIcons.food,
+                                title: "Climate",
+                                iconData: MdiIcons.weatherCloudy,
                                 index: 4),
                           ],
                         ),
                       ),
                     ),
-                    Text(
-                      "Popular",
-                      style: AppTheme.getTextStyle(
-                          themeData.textTheme.subtitle1,
-                          fontWeight: 700,
-                          color: themeData.colorScheme.onBackground),
-                    ),
-                    Spacing.height(16),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          singleEvent(
-                              title: "Flutter Test",
-                              image: './assets/design/pattern-1.png',
-                              date: "04",
-                              month: "May",
-                              subject: "California, US",
-                              time: "07:30 PM - 09:00 PM",
-                              width: 200),
-                          Spacing.width(16),
-                          singleEvent(
-                              title: "Flutter Dev",
-                              image: './assets/images/social/post-l1.jpg',
-                              date: "29",
-                              month: "Feb",
-                              subject: "California, US",
-                              time: "07:30 PM - 09:00 PM",
-                              width: 200),
-                          Spacing.width(16),
-                          singleEvent(
-                              title: "Flutter Test",
-                              image: './assets/design/pattern-1.png',
-                              date: "04",
-                              month: "May",
-                              subject: "California, US",
-                              time: "07:30 PM - 09:00 PM",
-                              width: 200),
-                        ],
-                      ),
-                    ),
-                    Spacing.height(16),
-                    Text(
-                      "This Weekend",
-                      style: AppTheme.getTextStyle(
-                          themeData.textTheme.subtitle1,
-                          fontWeight: 700,
-                          color: themeData.colorScheme.onBackground),
-                    ),
-                    Spacing.height(16),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          singleEvent(
-                              title: "Flutter Test",
-                              image: './assets/design/pattern-1.png',
-                              date: "04",
-                              month: "May",
-                              subject: "California, US",
-                              time: "07:30 PM - 09:00 PM",
-                              width: 200),
-                          Spacing.width(16),
-                          singleEvent(
-                              title: "Flutter Dev",
-                              image: './assets/images/social/post-l1.jpg',
-                              date: "29",
-                              month: "Feb",
-                              subject: "California, US",
-                              time: "07:30 PM - 09:00 PM",
-                              width: 200),
-                        ],
-                      ),
-                    ),
+                    if (selectedCategory == 0) AllBody(),
+                    if (selectedCategory == 3) WarfareBody(),
+                    if (selectedCategory == 4) ClimateBody(),
+                    // if (selectedCategory == 0) AllBody(),
                   ],
                 ),
               )),
@@ -285,7 +222,8 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
     );
   }
 
-  Widget singleCategory({IconData? iconData, required String title, int? index}) {
+  Widget singleCategory(
+      {IconData? iconData, required String title, int? index}) {
     bool isSelected = (selectedCategory == index);
     return MyCard(
       onTap: () {
@@ -339,8 +277,8 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
       required double width}) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => EventSingleEventScreen()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => EventSingleEventScreen()));
       },
       child: MyContainer.bordered(
         clipBehavior: Clip.hardEdge,

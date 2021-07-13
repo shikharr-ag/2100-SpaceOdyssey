@@ -30,74 +30,79 @@ class _EventUpcomingScreenState extends State<EventUpcomingScreen> {
       builder: (BuildContext context, AppNotifier value, Widget? child) {
         customAppTheme = AppTheme.getCustomAppTheme(value.themeMode());
         return Scaffold(
-            appBar: AppBar(
-              elevation: 0,
-              centerTitle: true,
-              backgroundColor: customAppTheme.bgLayer1,
-              title: Text(
-                "Upcoming",
-                style: AppTheme.getTextStyle(themeData.textTheme.subtitle1,
-                    color: themeData.colorScheme.onBackground, fontWeight: 600),
-              ),
-            ),
+          appBar: AppBar(
+            elevation: 0,
+            centerTitle: true,
             backgroundColor: customAppTheme.bgLayer1,
-            body: ListView(
-              padding: Spacing.x(8),
-              children: [
-                MyRow(
-                  defaultFlex: {
-                    ScreenMediaType.MD:12,
-                    ScreenMediaType.XL:8,
-                    ScreenMediaType.XXL:6,
-                  },
-                  children: [
-                    MyCol(
+            title: Text(
+              "Timeline",
+              style: AppTheme.getTextStyle(themeData.textTheme.subtitle1,
+                  color: themeData.colorScheme.onBackground, fontWeight: 600),
+            ),
+          ),
+          backgroundColor: customAppTheme.bgLayer1,
+          body: ListView(
+            padding: Spacing.x(8),
+            children: [
+              MyRow(
+                defaultFlex: {
+                  ScreenMediaType.MD: 12,
+                  ScreenMediaType.XL: 8,
+                  ScreenMediaType.XXL: 6,
+                },
+                children: [
+                  MyCol(
+                    child: singleEvent(
+                        image: './assets/design/pattern-1.png',
+                        time: "08:15 PM",
+                        date: "Fri, Apr 12, 2020",
+                        name: "Flutter Meet 1"),
+                  ),
+                  MyCol(
                       child: singleEvent(
                           image: './assets/design/pattern-1.png',
                           time: "08:15 PM",
                           date: "Fri, Apr 12, 2020",
-                          name: "Flutter Meet 1"),
-                    ),
-                    MyCol(
-                        child: singleEvent(
-                            image: './assets/design/pattern-1.png',
-                            time: "08:15 PM",
-                            date: "Fri, Apr 12, 2020",
-                            name: "Flutter Meet 2")),
-                    MyCol(
-                        child: singleEvent(
-                            image: './assets/design/pattern-1.png',
-                            time: "08:15 PM",
-                            date: "Fri, Apr 12, 2020",
-                            name: "Flutter Meet 3")),
-                    MyCol(
-                        child: singleEvent(
-                            image: './assets/design/pattern-1.png',
-                            time: "08:15 PM",
-                            date: "Fri, Apr 12, 2020",
-                            name: "Flutter Meet 4")),
-                    MyCol(
+                          name: "Flutter Meet 2")),
+                  MyCol(
                       child: singleEvent(
                           image: './assets/design/pattern-1.png',
                           time: "08:15 PM",
                           date: "Fri, Apr 12, 2020",
-                          name: "Flutter Meet 1"),
-                    ),
-                    MyCol(
-                        child: singleEvent(
-                            image: './assets/design/pattern-1.png',
-                            time: "08:15 PM",
-                            date: "Fri, Apr 12, 2020",
-                            name: "Flutter Meet 2")),
-                  ],
-                ),
-              ],
-            ));
+                          name: "Flutter Meet 3")),
+                  MyCol(
+                      child: singleEvent(
+                          image: './assets/design/pattern-1.png',
+                          time: "08:15 PM",
+                          date: "Fri, Apr 12, 2020",
+                          name: "Flutter Meet 4")),
+                  MyCol(
+                    child: singleEvent(
+                        image: './assets/design/pattern-1.png',
+                        time: "08:15 PM",
+                        date: "Fri, Apr 12, 2020",
+                        name: "Flutter Meet 1"),
+                  ),
+                  MyCol(
+                      child: singleEvent(
+                          image: './assets/design/pattern-1.png',
+                          time: "08:15 PM",
+                          date: "Fri, Apr 12, 2020",
+                          name: "Flutter Meet 2")),
+                ],
+              ),
+            ],
+          ),
+        );
       },
     );
   }
 
-  Widget singleEvent({required String image, required String name, required String date, required String time}) {
+  Widget singleEvent(
+      {required String image,
+      required String name,
+      required String date,
+      required String time}) {
     return MyContainer.bordered(
       onTap: () {
         Navigator.push(context,
@@ -175,8 +180,7 @@ class _EventUpcomingScreenState extends State<EventUpcomingScreen> {
                                 date,
                                 style: AppTheme.getTextStyle(
                                     themeData.textTheme.bodyText2,
-                                    color:
-                                        themeData.colorScheme.onBackground),
+                                    color: themeData.colorScheme.onBackground),
                               ),
                             )
                           ],
@@ -200,8 +204,7 @@ class _EventUpcomingScreenState extends State<EventUpcomingScreen> {
                                 time,
                                 style: AppTheme.getTextStyle(
                                     themeData.textTheme.bodyText2,
-                                    color:
-                                        themeData.colorScheme.onBackground),
+                                    color: themeData.colorScheme.onBackground),
                               ),
                             )
                           ],

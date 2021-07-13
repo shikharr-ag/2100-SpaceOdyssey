@@ -4,7 +4,7 @@
 * */
 
 import 'package:flutkit/apps/event/EventCreateScreen.dart';
-import 'package:flutkit/apps/event/EventHomeScreen.dart';
+import 'package:flutkit/screens/EventHomeScreen.dart';
 import 'package:flutkit/apps/event/EventProfileScreen.dart';
 import 'package:flutkit/apps/event/EventTicketScreen.dart';
 import 'package:flutkit/apps/event/EventUpcomingScreen.dart';
@@ -21,13 +21,10 @@ class EventFullApp extends StatefulWidget {
   _EventFullAppState createState() => _EventFullAppState();
 }
 
-
 class _EventFullAppState extends State<EventFullApp>
     with SingleTickerProviderStateMixin {
   late ThemeData themeData;
   late CustomAppTheme customAppTheme;
-
-
 
   Widget build(BuildContext context) {
     return Consumer<AppNotifier>(
@@ -37,28 +34,28 @@ class _EventFullAppState extends State<EventFullApp>
         return MyBottomNavigation(
           icons: [
             MdiIcons.homeOutline,
-            MdiIcons.plus,
-            MdiIcons.ticketConfirmationOutline,
-            MdiIcons.accountOutline,
+            // MdiIcons.plus,
+            MdiIcons.graphOutline,
+            //MdiIcons.accountOutline,
           ],
           activeIcons: [
             MdiIcons.home,
-            MdiIcons.plus,
-            MdiIcons.ticketConfirmation,
-            MdiIcons.account,
+            //MdiIcons.plus,
+            MdiIcons.graph,
+            //MdiIcons.account,
           ],
           screens: [
             EventHomeScreen(),
-            EventCreateScreen(),
+            // EventCreateScreen(),
             EventUpcomingScreen(),
-            EventProfileScreen(),
+            // EventProfileScreen(),
           ],
-          titles: ["Home", "Create", "Timeline", "Account"],
+          titles: ["Home", "Timeline"],
           color: themeData.colorScheme.onBackground,
           activeColor: themeData.colorScheme.primary,
           navigationBackground: customAppTheme.bgLayer1,
           brandTextColor: themeData.colorScheme.onBackground,
-          initialIndex: 2,
+          initialIndex: 0,
           verticalDividerColor: customAppTheme.border2,
           bottomNavigationElevation: 8,
         );

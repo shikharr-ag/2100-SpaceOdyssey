@@ -58,7 +58,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    "Welcome",
+                    "Welcome, Guardians.",
                     style: AppTheme.getTextStyle(themeData.textTheme.subtitle1,
                         color: themeData.colorScheme.onBackground,
                         letterSpacing: 0,
@@ -110,115 +110,130 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
               ),
             ),
             Spacing.height(16),
-            MyRow(
-              defaultFlex: {
-                ScreenMediaType.MD: 12,
-                ScreenMediaType.LG: 8,
-              },
-              wrapAlignment: WrapAlignment.start,
-              children: [
-                MyCol(
-                  child: singleTrendingWidget(
-                      image: './assets/images/shopping/product/product-8.jpg',
-                      name: "Colorful Sandal",
-                      price: "49.99"),
-                ),
-                MyCol(
-
-                    child: singleTrendingWidget(
-                        image: './assets/images/shopping/product/product-7.jpg',
-                        name: "Colorful Sandal",
-                        price: "49.99")),
-                MyCol(
-                    display: {
-                      ScreenMediaType.XS : DisplayType.None,
-                      ScreenMediaType.LG: DisplayType.Block
-                    },
-                    child: singleTrendingWidget(
-                        image: './assets/images/shopping/product/product-5.jpg',
-                        name: "Colorful Sandal",
-                        price: "49.99")),
-              ],
-            ),
-            Spacing.height(24),
             Padding(
               padding: Spacing.x(8),
-              child: Text("Popular Deals",
+              child: Text("Headlines",
                   style: AppTheme.getTextStyle(themeData.textTheme.subtitle1,
                       fontWeight: 600, letterSpacing: 0)),
             ),
             Spacing.height(16),
             Padding(
-
-              padding: Spacing.x(8),
+              padding: const EdgeInsets.all(8.0),
               child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: <Widget>[
-                    singleItemWidget(
-                        image: './assets/images/shopping/product/product-10.jpg',
-                        name: "Pop corn",
-                        rate: 45.99),
-                    Spacing.width(16),
-                    singleItemWidget(
-                        image: './assets/images/shopping/product/product-7.jpg',
-                        name: "Cosmic bang",
-                        rate: 78.99),
-                    Spacing.width(16),
-                    singleItemWidget(
-                        image: './assets/images/shopping/product/product-5.jpg',
-                        name: "Sweet Gems",
-                        rate: 35.99),
-                    Spacing.width(16),
-                    singleItemWidget(
-                        image: './assets/images/shopping/product/product-2.jpg',
-                        name: "Toffees",
-                        rate: 28.49),
-                    Spacing.width(16),
-                    singleItemWidget(
-                        image: './assets/images/shopping/product/product-3.jpg',
-                        name: "Candies",
-                        rate: 15.99),
-                    Spacing.width(16),
-                    singleItemWidget(
-                        image: './assets/images/shopping/product/product-9.jpg',
-                        name: "Candies",
-                        rate: 15.99),
-                    Spacing.width(16),
-                    singleItemWidget(
-                        image: './assets/images/shopping/product/product-8.jpg',
-                        name: "Candies",
-                        rate: 15.99),
-                    Spacing.width(16),
-                    singleItemWidget(
-                        image: './assets/images/shopping/product/product-6.jpg',
-                        name: "Candies",
-                        rate: 15.99),
-                    Spacing.width(16),
-                    singleItemWidget(
-                        image: './assets/images/shopping/product/product-4.jpg',
-                        name: "Candies",
-                        rate: 15.99),
-                    Spacing.width(16),
-                    singleItemWidget(
-                        image: './assets/images/shopping/product/product-1.jpg',
-                        name: "Candies",
-                        rate: 15.99),
+                child: MyRow(
+                  defaultFlex: {
+                    ScreenMediaType.MD: 12,
+                    ScreenMediaType.LG: 8,
+                  },
+                  wrapAlignment: WrapAlignment.start,
+                  children: [
+                    MyCol(
+                      child: singleTrendingWidget(
+                          image:
+                              './assets/images/shopping/product/product-8.jpg',
+                          name: "Colorful Sandal",
+                          price: "49.99"),
+                    ),
+                    MyCol(
+                      child: singleTrendingWidget(
+                          image:
+                              './assets/images/shopping/product/product-7.jpg',
+                          name: "Colorful Sandal",
+                          price: "49.99"),
+                    ),
+                    MyCol(
+                        display: {
+                          ScreenMediaType.XS: DisplayType.None,
+                          ScreenMediaType.LG: DisplayType.Block
+                        },
+                        child: singleTrendingWidget(
+                            image:
+                                './assets/images/shopping/product/product-5.jpg',
+                            name: "Colorful Sandal",
+                            price: "49.99")),
                   ],
                 ),
               ),
             ),
             Spacing.height(24),
+            // Padding(
+            //   padding: Spacing.x(8),
+            //   child: Text("Popular Deals",
+            //       style: AppTheme.getTextStyle(themeData.textTheme.subtitle1,
+            //           fontWeight: 600, letterSpacing: 0)),
+            // ),
+            // Spacing.height(16),
+            // Padding(
+            //   padding: Spacing.x(8),
+            //   child: SingleChildScrollView(
+            //     scrollDirection: Axis.horizontal,
+            //     child: Row(
+            //       children: <Widget>[
+            //         singleItemWidget(
+            //             image:
+            //                 './assets/images/shopping/product/product-10.jpg',
+            //             name: "Pop corn",
+            //             rate: 45.99),
+            //         Spacing.width(16),
+            //         singleItemWidget(
+            //             image: './assets/images/shopping/product/product-7.jpg',
+            //             name: "Cosmic bang",
+            //             rate: 78.99),
+            //         Spacing.width(16),
+            //         singleItemWidget(
+            //             image: './assets/images/shopping/product/product-5.jpg',
+            //             name: "Sweet Gems",
+            //             rate: 35.99),
+            //         Spacing.width(16),
+            //         singleItemWidget(
+            //             image: './assets/images/shopping/product/product-2.jpg',
+            //             name: "Toffees",
+            //             rate: 28.49),
+            //         Spacing.width(16),
+            //         singleItemWidget(
+            //             image: './assets/images/shopping/product/product-3.jpg',
+            //             name: "Candies",
+            //             rate: 15.99),
+            //         Spacing.width(16),
+            //         singleItemWidget(
+            //             image: './assets/images/shopping/product/product-9.jpg',
+            //             name: "Candies",
+            //             rate: 15.99),
+            //         Spacing.width(16),
+            //         singleItemWidget(
+            //             image: './assets/images/shopping/product/product-8.jpg',
+            //             name: "Candies",
+            //             rate: 15.99),
+            //         Spacing.width(16),
+            //         singleItemWidget(
+            //             image: './assets/images/shopping/product/product-6.jpg',
+            //             name: "Candies",
+            //             rate: 15.99),
+            //         Spacing.width(16),
+            //         singleItemWidget(
+            //             image: './assets/images/shopping/product/product-4.jpg',
+            //             name: "Candies",
+            //             rate: 15.99),
+            //         Spacing.width(16),
+            //         singleItemWidget(
+            //             image: './assets/images/shopping/product/product-1.jpg',
+            //             name: "Candies",
+            //             rate: 15.99),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            //Spacing.height(24),
             Padding(
               padding: Spacing.x(8),
-              child: Text("For You",
+              child: Text("Articles",
                   style: AppTheme.getTextStyle(themeData.textTheme.subtitle1,
                       fontWeight: 600, letterSpacing: 0)),
             ),
             Spacing.height(16),
             MyRow(
               defaultFlex: {
-                ScreenMediaType.MD:12,
+                ScreenMediaType.MD: 12,
                 ScreenMediaType.XL: 8,
                 ScreenMediaType.XXL: 6,
               },
@@ -283,7 +298,8 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
         ));
   }
 
-  Widget singleItemWidget({required String image, required String name, double? rate}) {
+  Widget singleItemWidget(
+      {required String image, required String name, double? rate}) {
     String key = Generator.randomString(10);
     return InkWell(
       onTap: () {
@@ -332,7 +348,11 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
   }
 
   Widget singleForYouWidget(
-      {required String name, required String image, required String shopName, required double star, int? price}) {
+      {required String name,
+      required String image,
+      required String shopName,
+      required double star,
+      int? price}) {
     String key = Generator.randomString(10);
     return MyCard(
       onTap: () {
@@ -340,9 +360,9 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
             context,
             MaterialPageRoute(
                 builder: (context) => ShoppingProductScreen(
-                  heroTag: key,
-                  image: image,
-                )));
+                      heroTag: key,
+                      image: image,
+                    )));
       },
       borderRadiusAll: 8,
       child: Row(
@@ -433,17 +453,18 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
     );
   }
 
-  Widget singleTrendingWidget({required String image, required String name, required String price}) {
+  Widget singleTrendingWidget(
+      {required String image, required String name, required String price}) {
     String key = Generator.randomString(10);
     return MyCard(
-      onTap: (){
+      onTap: () {
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => ShoppingProductScreen(
-                  heroTag: key,
-                  image: image,
-                )));
+                      heroTag: key,
+                      image: image,
+                    )));
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -758,7 +779,8 @@ class _NotificationDialogState extends State<NotificationDialog> {
     );
   }
 
-  Widget singleNotification({required String image, required RichText text, required String time}) {
+  Widget singleNotification(
+      {required String image, required RichText text, required String time}) {
     return Container(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
