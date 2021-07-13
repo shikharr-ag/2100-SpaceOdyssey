@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutkit/style/ScreenMedia.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../AppNotifier.dart';
@@ -368,6 +369,11 @@ class _NavigationRailHeader extends StatelessWidget {
                             ),
                             width: 24,
                           ),
+                          // SvgPicture.asset(
+                          //   'assets/new_images/networking.svg',
+                          //   color: Colors.red,
+                          //   width: 24,
+                          // ),
                           Spacing.width(12),
                           Align(
                             alignment: AlignmentDirectional.centerStart,

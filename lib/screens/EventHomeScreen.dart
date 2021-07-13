@@ -317,7 +317,10 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
                               ),
                             ),
                           ),
-                          if (selectedCategory == 0) AllBody(),
+                          if (selectedCategory == 0)
+                            AllBody(
+                              isFirst: isFirst,
+                            ),
                           if (selectedCategory == 3) WarfareBody(),
                           if (selectedCategory == 4) ClimateBody(),
                           // if (selectedCategory == 0) AllBody(),

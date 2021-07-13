@@ -8,7 +8,7 @@ class Result extends StatelessWidget {
 
   String get resultPhrase {
     String resultText;
-    if (resultScore > 4) {
+    if (resultScore >= 4) {
       resultText = 'You are completely safe from the Z.E.U.S Virus.';
     } else if (resultScore > 2) {
       resultText =

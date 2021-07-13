@@ -53,39 +53,39 @@ class _EventUpcomingScreenState extends State<EventUpcomingScreen> {
                 children: [
                   MyCol(
                     child: singleEvent(
-                        image: './assets/design/pattern-1.png',
+                        image: 'assets/design/pattern-1.png',
                         time: "08:15 PM",
                         date: "Fri, Apr 12, 2020",
                         name: "Flutter Meet 1"),
                   ),
                   MyCol(
                       child: singleEvent(
-                          image: './assets/design/pattern-1.png',
+                          image: 'assets/design/pattern-1.png',
                           time: "08:15 PM",
                           date: "Fri, Apr 12, 2020",
                           name: "Flutter Meet 2")),
                   MyCol(
                       child: singleEvent(
-                          image: './assets/design/pattern-1.png',
+                          image: 'assets/design/pattern-1.png',
                           time: "08:15 PM",
                           date: "Fri, Apr 12, 2020",
                           name: "Flutter Meet 3")),
                   MyCol(
                       child: singleEvent(
-                          image: './assets/design/pattern-1.png',
+                          image: 'assets/design/pattern-1.png',
                           time: "08:15 PM",
                           date: "Fri, Apr 12, 2020",
                           name: "Flutter Meet 4")),
                   MyCol(
                     child: singleEvent(
-                        image: './assets/design/pattern-1.png',
+                        image: 'assets/design/pattern-1.png',
                         time: "08:15 PM",
                         date: "Fri, Apr 12, 2020",
                         name: "Flutter Meet 1"),
                   ),
                   MyCol(
                       child: singleEvent(
-                          image: './assets/design/pattern-1.png',
+                          image: 'assets/design/pattern-1.png',
                           time: "08:15 PM",
                           date: "Fri, Apr 12, 2020",
                           name: "Flutter Meet 2")),
@@ -106,13 +106,15 @@ class _EventUpcomingScreenState extends State<EventUpcomingScreen> {
     return MyContainer.bordered(
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => Container(
-                      child: Center(
-                        child: Text('Info'),
-                      ),
-                    )));
+          context,
+          MaterialPageRoute(
+            builder: (context) => Container(
+              child: Center(
+                child: Text('Info'),
+              ),
+            ),
+          ),
+        );
       },
       child: Row(
         children: [

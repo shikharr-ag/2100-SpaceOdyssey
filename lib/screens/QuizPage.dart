@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../AppTheme.dart';
 import '../myWidgets/quiz.dart';
 import '../myWidgets/result.dart';
 
@@ -18,7 +19,7 @@ class _QuizPageState extends State<QuizPage> {
   final _questions = const [
     {
       'questionText':
-          '1.	What is the answer of ("1" + "1"), and what is the response of (1+1) ?',
+          'What is the answer of ("1" + "1"), and what is the response of (1+1) ?',
       'answers': [
         {'text': '"2", 2', 'score': 0},
         {'text': '"11", 11', 'score': 0},
@@ -30,7 +31,7 @@ class _QuizPageState extends State<QuizPage> {
       'questionText':
           'Just now, a close friend of yours is reported missing. What will be your emotion?',
       'answers': [
-        {'text': 'happy', 'score': 3},
+        {'text': 'Happy', 'score': 3},
         {'text': 'Excited', 'score': 0},
         {'text': 'Tensed', 'score': 1},
         {'text': 'Long term depression', 'score': 0},
@@ -56,7 +57,7 @@ class _QuizPageState extends State<QuizPage> {
     },
     {
       'questionText':
-          '5.	A student copies and gets the first rank in a test. You are the head-teacher, and you know that the student has copied. What will you do?',
+          'A student copies and gets the first rank in a test. You are the head-teacher, and you know that the student has copied. What will you do?',
       'answers': [
         {'text': 'Call him and educate him', 'score': 1},
         {'text': 'Congratulate him', 'score': 0},
@@ -79,24 +80,7 @@ class _QuizPageState extends State<QuizPage> {
           quizTaken = sharedPreferences.getBool('quiz_status')!;
         } else
           quizTaken = false;
-        sharedPreferences.setBool('quiz_status', true);
       }).whenComplete(() => setState(() => isLoading = false));
-    });
-  }
-
-  void _resetQuiz() {
-    Future.sync(() async {
-      SharedPreferences sharedPreferences =
-          await SharedPreferences.getInstance();
-      if (sharedPreferences.containsKey('quiz_status')) {
-        quizTaken = sharedPreferences.getBool('quiz_status')!;
-      } else
-        quizTaken = false;
-      sharedPreferences.setBool('first', true);
-      setState(() {
-        _questionIndex = 0;
-        _totalScore = 0;
-      });
     });
   }
 
@@ -114,6 +98,11 @@ class _QuizPageState extends State<QuizPage> {
       print('We have more questions!');
     } else {
       print('No more questions!');
+      Future.sync(() async {
+        SharedPreferences sharedPreferences =
+            await SharedPreferences.getInstance();
+        sharedPreferences.setBool('quiz_status', true);
+      });
     }
   }
 
@@ -122,16 +111,38 @@ class _QuizPageState extends State<QuizPage> {
     return isLoading
         ? CircularProgressIndicator()
         : quizTaken
-            ? Center(
-                child: Text(
-                    'You have already taken the self assessment.\nOfficials will get in contact with you soon.'),
+            ? Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(
+                          'assets/new_images/planet-sphere.jpg',
+                        ),
+                        fit: BoxFit.fill)),
+                child: Center(
+                  child: Text(
+                    'You have already taken the self assessment.\nOfficials will get in contact with you soon.',
+                    style: AppTheme.getTextStyle(
+                        Theme.of(context).textTheme.bodyText1,
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: 600),
+                  ),
+                ),
               )
             : _questionIndex < _questions.length
-                ? Quiz(
-                    answerQuestion: _answerQuestion,
-                    questionIndex: _questionIndex,
-                    questions: _questions,
+                ? Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                              'assets/new_images/planet-sphere.jpg',
+                            ),
+                            fit: BoxFit.fill)),
+                    child: Quiz(
+                      answerQuestion: _answerQuestion,
+                      questionIndex: _questionIndex,
+                      questions: _questions,
+                    ),
                   )
-                : Result(_totalScore, _resetQuiz);
+                : Result(_totalScore, () {});
   }
 }

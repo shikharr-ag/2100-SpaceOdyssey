@@ -8,6 +8,7 @@ import 'package:flutkit/screens/EventHomeScreen.dart';
 import 'package:flutkit/apps/event/EventProfileScreen.dart';
 import 'package:flutkit/apps/event/EventTicketScreen.dart';
 import 'package:flutkit/apps/event/EventUpcomingScreen.dart';
+import 'package:flutkit/screens/GuideScreen.dart';
 import 'package:flutkit/screens/QuizPage.dart';
 import 'package:flutkit/widgets/custom/MyBottomNavigation.dart';
 import 'package:flutter/material.dart';
@@ -43,13 +44,14 @@ class _EventFullAppState extends State<EventFullApp>
             // MdiIcons.plus,
             MdiIcons.graphOutline,
             MdiIcons.shieldOutline,
-            //MdiIcons.accountOutline,
+            MdiIcons.bookAccountOutline,
           ],
           activeIcons: [
             MdiIcons.home,
             //MdiIcons.plus,
             MdiIcons.graph,
             MdiIcons.shield,
+            MdiIcons.bookAccount
             //MdiIcons.account,
           ],
           screens: [
@@ -57,9 +59,10 @@ class _EventFullAppState extends State<EventFullApp>
             // EventCreateScreen(),
             EventUpcomingScreen(),
             QuizPage(),
+            GuideScreen(),
             // EventProfileScreen(),
           ],
-          titles: ["Home", "Timeline", "Z.E.U.S Quiz"],
+          titles: ["Home", "Timeline", "Z.E.U.S Quiz", "Guide"],
           color: themeData.colorScheme.onBackground,
           activeColor: themeData.colorScheme.primary,
           navigationBackground: customAppTheme.bgLayer1,

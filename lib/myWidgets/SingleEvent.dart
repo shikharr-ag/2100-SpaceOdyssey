@@ -1,3 +1,4 @@
+import 'package:flutkit/apps/event/EventFullApp.dart';
 import 'package:flutkit/apps/event/EventSingleEventScreen.dart';
 import 'package:flutkit/style/MyCard.dart';
 import 'package:flutkit/style/MyContainer.dart';
@@ -27,8 +28,18 @@ class SingleEvent extends StatelessWidget {
     final themeData = Theme.of(context);
     return InkWell(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => EventSingleEventScreen()));
+        if (key == ValueKey('Guide'))
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => EventFullApp(
+                        index: 3,
+                      )));
+        else
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => EventSingleEventScreen()));
       },
       child: MyContainer.bordered(
         clipBehavior: Clip.hardEdge,
