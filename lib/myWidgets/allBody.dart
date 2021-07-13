@@ -14,7 +14,7 @@ class AllBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Popular",
+          "Headlines",
           style: AppTheme.getTextStyle(themeData.textTheme.subtitle1,
               fontWeight: 700, color: themeData.colorScheme.onBackground),
         ),
@@ -24,21 +24,21 @@ class AllBody extends StatelessWidget {
           child: Row(
             children: [
               SingleEvent(
-                  title: "Flutter Test",
+                  title: "War Over AI",
                   image: './assets/design/pattern-1.png',
-                  date: "04",
-                  month: "May",
-                  subject: "California, US",
-                  time: "07:30 PM - 09:00 PM",
+                  date: "01",
+                  month: "Jan",
+                  subject: "A brief explanation of current scenario",
+                  time: "3 mins read",
                   width: 200),
               Spacing.width(16),
               SingleEvent(
-                  title: "Flutter Dev",
+                  title: "Guardians To The Rescue",
                   image: './assets/images/social/post-l1.jpg',
-                  date: "29",
-                  month: "Feb",
-                  subject: "California, US",
-                  time: "07:30 PM - 09:00 PM",
+                  date: "31",
+                  month: "Dec",
+                  subject: "New Delhi, India",
+                  time: "2 mins read",
                   width: 200),
               Spacing.width(16),
               SingleEvent(
