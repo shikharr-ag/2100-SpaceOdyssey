@@ -105,8 +105,14 @@ class _EventUpcomingScreenState extends State<EventUpcomingScreen> {
       required String time}) {
     return MyContainer.bordered(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => EventTicketScreen()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Container(
+                      child: Center(
+                        child: Text('Info'),
+                      ),
+                    )));
       },
       child: Row(
         children: [
@@ -138,12 +144,7 @@ class _EventUpcomingScreenState extends State<EventUpcomingScreen> {
                             fontWeight: 600),
                       ),
                       InkWell(
-                        onTap: () {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) =>
-                                  EventTicketDialog());
-                        },
+                        onTap: () {},
                         child: Container(
                           padding: Spacing.all(6),
                           child: Icon(

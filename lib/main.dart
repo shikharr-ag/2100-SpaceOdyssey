@@ -1,17 +1,5 @@
-/*
-* File : Main File
-* Version : 1.0.0
-* */
-
-import 'package:flutkit/AppsHome.dart';
-import 'package:flutkit/apps/shopping/ShoppingFullApp.dart';
-// import 'package:flutkit/apps/event/EventFullApp.dart';
-// import 'package:flutkit/apps/food/FoodLoginScreen.dart';
-// import 'package:flutkit/apps/food/FoodPasswordScreen.dart';
-// import 'package:flutkit/apps/food/FoodRegisterScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'AppNotifier.dart';
 import 'AppTheme.dart';
 import 'apps/event/EventFullApp.dart';
