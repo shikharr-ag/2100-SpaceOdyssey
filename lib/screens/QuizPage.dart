@@ -131,6 +131,9 @@ class _QuizPageState extends State<QuizPage> {
               )
             : _questionIndex < _questions.length
                 ? Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(
