@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../AppTheme.dart';
 import 'SingleEvent.dart';
 
-class ClimateBody extends StatelessWidget {
-  const ClimateBody({Key? key}) : super(key: key);
+class SocietyBody extends StatelessWidget {
+  const SocietyBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class ClimateBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Climate",
+          "Societal Norms",
           style: AppTheme.getTextStyle(themeData.textTheme.subtitle1,
               fontWeight: 700, color: themeData.colorScheme.onBackground),
         ),
@@ -23,27 +23,26 @@ class ClimateBody extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              Spacing.width(16),
               SingleEvent(
-                  key: ValueKey('covid'),
-                  title: "The COVID Timeline",
-                  image: 'assets/new_images/covid.png',
-                  date: "31",
-                  month: "Dec",
-                  subject: "A small description of how we fought COVID.",
-                  time: "2 mins read",
+                  key: ValueKey('soc'),
+                  title: "Change in society",
+                  image: 'assets/new_images/society.jpeg',
+                  date: "01",
+                  month: "Jan",
+                  subject: "A brief explanation of current scenario",
+                  time: "3 mins read",
                   width: 200),
               Spacing.width(16),
               SingleEvent(
-                  key: ValueKey('climate'),
-                  title: "The COVID Effect",
-                  image: 'assets/new_images/resp.png',
-                  date: "31",
-                  month: "Dec",
-                  subject:
-                      "A small description of how COVID changed the society.",
-                  time: "2 mins read",
+                  key: ValueKey('csoc'),
+                  title: "Change in lifestyle",
+                  image: 'assets/new_images/lifestyle.jpeg',
+                  date: "01",
+                  month: "Jan",
+                  subject: "A survival of fittest",
+                  time: "3 mins read",
                   width: 200),
+              Spacing.width(16),
             ],
           ),
         ),

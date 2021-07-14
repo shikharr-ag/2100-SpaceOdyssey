@@ -40,6 +40,7 @@ dependencies:
   rflutter_alert: ^2.0.2
   rive_loading: ^0.1.0
   flutter_svg: ^0.22.0
+  carousel_slider: ^4.0.0
 
 
 dev_dependencies:

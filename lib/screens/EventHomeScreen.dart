@@ -1,8 +1,9 @@
-import 'package:flutkit/apps/event/EventFullApp.dart';
 import 'package:flutkit/myWidgets/ClimateBody.dart';
+import 'package:flutkit/myWidgets/EconomicBody.dart';
+import 'package:flutkit/myWidgets/SocietyBody.dart';
 import 'package:flutkit/myWidgets/WarfareBody.dart';
 import 'package:flutkit/myWidgets/allBody.dart';
-import 'package:flutkit/screens/QuizPage.dart';
+
 import 'package:flutkit/style/MyCard.dart';
 import 'package:flutkit/style/MyContainer.dart';
 import 'package:flutkit/utils/SizeConfig.dart';
@@ -11,13 +12,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:rive_loading/rive_loading.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../AppNotifier.dart';
 import '../AppTheme.dart';
-import '../apps/event/EventSingleEventScreen.dart';
+
+import 'EventFullApp.dart';
+import 'EventSingleEventScreen.dart';
 
 class EventHomeScreen extends StatefulWidget {
   EventHomeScreen();
@@ -88,7 +90,7 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
                     onPressed: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EventFullApp(index: 2),
+                        builder: (context) => EventFullApp(index: 1),
                       ),
                     ),
                   ),
@@ -115,9 +117,6 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
             : SafeArea(
                 child: Scaffold(
                     key: _scaffoldKey,
-                    endDrawer: FilterWidget(
-                      themeType: value.themeMode(),
-                    ),
                     resizeToAvoidBottomInset: false,
                     body: Container(
                       color: customAppTheme.bgLayer1,
@@ -131,10 +130,6 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      // "Today " +
-                                      //     DateTime.now()
-                                      //         .toIso8601String()
-                                      //         .substring(0, 10),
                                       "Welcome, Guardians.",
                                       style: AppTheme.getTextStyle(
                                           themeData.textTheme.bodyText2,
@@ -207,82 +202,10 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
                                   ],
                                 ),
                               ),
-                              // ClipRRect(
-                              //   borderRadius: BorderRadius.all(Radius.circular(8)),
-                              //   child: Image(
-                              //     image: AssetImage('./assets/images/avatar-2.jpg'),
-                              //     width: 32,
-                              //     height: 32,
-                              //   ),
-                              // )
                             ],
                           ),
                           Spacing.height(16),
-                          //Row(
-                          //children: [
-                          // Expanded(
-                          //   child: MyContainer.bordered(
-                          //     padding: Spacing.all(6),
-                          //     child: Row(
-                          //       children: [
-                          //         Container(
-                          //           margin: Spacing.left(12),
-                          //           child: Icon(
-                          //             MdiIcons.magnify,
-                          //             color: themeData.colorScheme.onBackground
-                          //                 .withAlpha(200),
-                          //             size: 16,
-                          //           ),
-                          //         ),
-                          //         Expanded(
-                          //           child: Container(
-                          //             margin: Spacing.left(12),
-                          //             child: TextFormField(
-                          //               style: AppTheme.getTextStyle(
-                          //                   themeData.textTheme.bodyText2,
-                          //                   color: themeData
-                          //                       .colorScheme.onBackground,
-                          //                   fontWeight: 500),
-                          //               decoration: InputDecoration(
-                          //                 fillColor: customAppTheme.bgLayer1,
-                          //                 hintStyle: AppTheme.getTextStyle(
-                          //                     themeData.textTheme.bodyText2,
-                          //                     color: themeData
-                          //                         .colorScheme.onBackground,
-                          //                     muted: true,
-                          //                     fontWeight: 500),
-                          //                 hintText: "Find Events...",
-                          //                 border: InputBorder.none,
-                          //                 enabledBorder: InputBorder.none,
-                          //                 focusedBorder: InputBorder.none,
-                          //                 isDense: true,
-                          //               ),
-                          //               textCapitalization:
-                          //                   TextCapitalization.sentences,
-                          //             ),
-                          //           ),
-                          //         ),
-                          //       ],
-                          //     ),
-                          //   ),
-                          // ),
-                          //Spacing.width(16),
-                          // InkWell(
-                          //   onTap: () {
-                          //     _scaffoldKey.currentState!.openEndDrawer();
-                          //   },
-                          //   child: MyContainer(
-                          //     paddingAll: 8,
-                          //     color: themeData.colorScheme.primary,
-                          //     child: Icon(
-                          //       MdiIcons.tune,
-                          //       size: 20,
-                          //       color: themeData.colorScheme.onPrimary,
-                          //     ),
-                          //   ),
-                          // ),
-                          //],
-                          //),
+
                           Container(
                             padding: Spacing.y(16),
                             child: SingleChildScrollView(
@@ -321,8 +244,11 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
                             AllBody(
                               isFirst: isFirst,
                             ),
+                          if (selectedCategory == 1) EconomicBody(),
+                          if (selectedCategory == 2) SocietyBody(),
                           if (selectedCategory == 3) WarfareBody(),
                           if (selectedCategory == 4) ClimateBody(),
+
                           // if (selectedCategory == 0) AllBody(),
                         ],
                       ),
@@ -387,8 +313,16 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
       required double width}) {
     return InkWell(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => EventSingleEventScreen()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => EventSingleEventScreen(
+                    image: image,
+                    date: date,
+                    month: month,
+                    title: title,
+                    subject: subject,
+                    time: time)));
       },
       child: MyContainer.bordered(
         clipBehavior: Clip.hardEdge,
@@ -503,354 +437,6 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class FilterWidget extends StatefulWidget {
-  final int themeType;
-  final GlobalKey<ScaffoldState>? scaffoldKey;
-
-  const FilterWidget({Key? key, required this.themeType, this.scaffoldKey})
-      : super(key: key);
-
-  @override
-  _FilterWidgetState createState() => _FilterWidgetState();
-}
-
-class _FilterWidgetState extends State<FilterWidget> {
-  late ThemeData themeData;
-  late CustomAppTheme customAppTheme;
-
-  double _startValue = 30;
-  double _endValue = 60;
-  int selectedLocation = 0, selectedDate = 2, selectedTOD = 1;
-
-  @override
-  void initState() {
-    super.initState();
-    themeData = AppTheme.getThemeFromThemeMode(widget.themeType);
-    customAppTheme = AppTheme.getCustomAppTheme(widget.themeType);
-  }
-
-  _pickDate(BuildContext context) async {
-    await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-  }
-
-  _pickTime(BuildContext context) async {
-    await showTimePicker(context: context, initialTime: TimeOfDay.now());
-  }
-
-  Widget build(BuildContext context) {
-    return Container(
-      width: 300,
-      margin: Spacing.y(16),
-      padding: Spacing.xy(24, 16),
-      decoration: BoxDecoration(
-          color: customAppTheme.bgLayer1,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(16), bottomLeft: Radius.circular(16))),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    MdiIcons.close,
-                    color: themeData.colorScheme.onBackground,
-                    size: 16,
-                  ),
-                ),
-                Text(
-                  "Filter".toUpperCase(),
-                  style: AppTheme.getTextStyle(themeData.textTheme.caption,
-                      fontWeight: 700,
-                      color: themeData.colorScheme.onBackground),
-                ),
-                Text(
-                  "Reset",
-                  style: AppTheme.getTextStyle(themeData.textTheme.caption,
-                      fontSize: 12,
-                      xMuted: true,
-                      letterSpacing: 0,
-                      fontWeight: 600,
-                      color: themeData.colorScheme.onBackground),
-                )
-              ],
-            ),
-            Spacing.height(16),
-            Text(
-              "Location",
-              style: AppTheme.getTextStyle(themeData.textTheme.subtitle2,
-                  color: themeData.colorScheme.onBackground, fontWeight: 700),
-            ),
-            Spacing.height(8),
-            locationWidget(),
-            Spacing.height(16),
-            Text(
-              "Date",
-              style: AppTheme.getTextStyle(themeData.textTheme.subtitle2,
-                  color: themeData.colorScheme.onBackground, fontWeight: 700),
-            ),
-            Spacing.height(8),
-            dateWidget(),
-            Spacing.height(16),
-            Text(
-              "Time of day",
-              style: AppTheme.getTextStyle(themeData.textTheme.subtitle2,
-                  color: themeData.colorScheme.onBackground, fontWeight: 700),
-            ),
-            Spacing.height(8),
-            todWidget(),
-            Spacing.height(16),
-            Text(
-              "Price",
-              style: AppTheme.getTextStyle(themeData.textTheme.subtitle2,
-                  color: themeData.colorScheme.onBackground, fontWeight: 700),
-            ),
-            Spacing.height(8),
-            Text(
-              ((_startValue == 0)
-                      ? "Free"
-                      : "\$" + _startValue.floor().toString()) +
-                  " - \$" +
-                  _endValue.floor().toString(),
-              style: AppTheme.getTextStyle(themeData.textTheme.caption,
-                  color: themeData.colorScheme.onBackground, fontWeight: 600),
-            ),
-            SliderTheme(
-              data: SliderThemeData(
-                rangeThumbShape:
-                    RoundRangeSliderThumbShape(enabledThumbRadius: 7),
-                trackHeight: 2,
-              ),
-              child: RangeSlider(
-                values: RangeValues(_startValue, _endValue),
-                min: 0,
-                max: 199,
-                onChanged: (values) {
-                  setState(() {
-                    _startValue = values.start.roundToDouble();
-                    _endValue = values.end.roundToDouble();
-                  });
-                },
-              ),
-            ),
-            Spacing.height(8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      "CANCEL",
-                      style: AppTheme.getTextStyle(themeData.textTheme.caption,
-                          fontSize: 12,
-                          color: themeData.colorScheme.primary,
-                          letterSpacing: 0.5,
-                          fontWeight: 600),
-                    )),
-                ElevatedButton(
-                  style: ButtonStyle(
-                      padding: MaterialStateProperty.all(Spacing.xy(32, 0))),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    "APPLY",
-                    style: AppTheme.getTextStyle(themeData.textTheme.caption,
-                        fontWeight: 600,
-                        fontSize: 12,
-                        letterSpacing: 0.5,
-                        color: themeData.colorScheme.onPrimary),
-                  ),
-                )
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget locationWidget() {
-    return Container(
-      child: Wrap(
-        spacing: 8,
-        runSpacing: 8,
-        children: [
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedLocation = 0;
-              });
-            },
-            child: singleChip(
-                isSelected: selectedLocation == 0,
-                text: "Current location",
-                iconData: MdiIcons.mapMarkerOutline),
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedLocation = 1;
-              });
-            },
-            child: singleChip(
-                isSelected: selectedLocation == 1,
-                text: "Search",
-                iconData: MdiIcons.magnify),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget todWidget() {
-    return Container(
-      child: Wrap(
-        spacing: 12,
-        runSpacing: 12,
-        children: [
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedTOD = 0;
-              });
-            },
-            child: singleChip(isSelected: selectedTOD == 0, text: "Day"),
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedTOD = 1;
-              });
-            },
-            child: singleChip(isSelected: selectedTOD == 1, text: "Night"),
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedTOD = 2;
-                _pickTime(context);
-              });
-            },
-            child: singleChip(
-                isSelected: selectedTOD == 2,
-                text: "Choose time",
-                iconData: MdiIcons.clockOutline),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget dateWidget() {
-    return Container(
-      child: Wrap(
-        spacing: 12,
-        runSpacing: 12,
-        children: [
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedDate = 0;
-              });
-            },
-            child: singleChip(isSelected: selectedDate == 0, text: "Today"),
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedDate = 1;
-              });
-            },
-            child: singleChip(isSelected: selectedDate == 1, text: "Tomorrow"),
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedDate = 2;
-              });
-            },
-            child: singleChip(
-              isSelected: selectedDate == 2,
-              text: "This week",
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                selectedDate = 3;
-                _pickDate(context);
-              });
-            },
-            child: singleChip(
-                isSelected: selectedDate == 3,
-                text: "Choose a date",
-                iconData: MdiIcons.calendarOutline),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget singleChip({IconData? iconData, String? text, bool? isSelected}) {
-    if (iconData != null) {
-      return Chip(
-        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        backgroundColor: isSelected!
-            ? themeData.colorScheme.primary
-            : themeData.colorScheme.primary.withAlpha(24),
-        avatar: Icon(iconData,
-            size: 16,
-            color: isSelected
-                ? themeData.colorScheme.onPrimary
-                : themeData.colorScheme.primary),
-        label: Text(
-          text!,
-          style: AppTheme.getTextStyle(themeData.textTheme.caption,
-              fontSize: 12.5,
-              color: isSelected
-                  ? themeData.colorScheme.onPrimary
-                  : themeData.colorScheme.primary,
-              letterSpacing: 0,
-              wordSpacing: 0,
-              fontWeight: 500),
-        ),
-        padding: Spacing.fromLTRB(12, 6, 12, 6),
-      );
-    }
-
-    return Chip(
-      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      backgroundColor: isSelected!
-          ? themeData.colorScheme.primary
-          : themeData.colorScheme.primary.withAlpha(24),
-      label: Text(
-        text!,
-        style: AppTheme.getTextStyle(themeData.textTheme.caption,
-            color: isSelected
-                ? themeData.colorScheme.onPrimary
-                : themeData.colorScheme.primary,
-            letterSpacing: 0,
-            wordSpacing: 0,
-            fontWeight: 500),
-      ),
-      padding: Spacing.fromLTRB(12, 6, 12, 6),
     );
   }
 }

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../AppTheme.dart';
 import 'SingleEvent.dart';
 
-class ClimateBody extends StatelessWidget {
-  const ClimateBody({Key? key}) : super(key: key);
+class EconomicBody extends StatelessWidget {
+  const EconomicBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class ClimateBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Climate",
+          "Economic Development",
           style: AppTheme.getTextStyle(themeData.textTheme.subtitle1,
               fontWeight: 700, color: themeData.colorScheme.onBackground),
         ),
@@ -25,25 +25,15 @@ class ClimateBody extends StatelessWidget {
             children: [
               Spacing.width(16),
               SingleEvent(
-                  key: ValueKey('covid'),
-                  title: "The COVID Timeline",
-                  image: 'assets/new_images/covid.png',
+                  key: ValueKey('ecoDev'),
+                  title: "The Economic Development",
+                  image: 'assets/new_images/ecomic-dvp.jpeg',
                   date: "31",
                   month: "Dec",
-                  subject: "A small description of how we fought COVID.",
+                  subject: "A small description of how economy developed.",
                   time: "2 mins read",
                   width: 200),
               Spacing.width(16),
-              SingleEvent(
-                  key: ValueKey('climate'),
-                  title: "The COVID Effect",
-                  image: 'assets/new_images/resp.png',
-                  date: "31",
-                  month: "Dec",
-                  subject:
-                      "A small description of how COVID changed the society.",
-                  time: "2 mins read",
-                  width: 200),
             ],
           ),
         ),

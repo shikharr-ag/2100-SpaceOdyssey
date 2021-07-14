@@ -365,7 +365,7 @@ class _NavigationRailHeader extends StatelessWidget {
                           Spacing.width(2),
                           Image(
                             image: AssetImage(
-                              'assets/brand/flutkit_icon.png',
+                              'assets/new_images/logo.png',
                             ),
                             width: 24,
                           ),
@@ -381,7 +381,7 @@ class _NavigationRailHeader extends StatelessWidget {
                             child: Opacity(
                               opacity: animation.value,
                               child: Text(
-                                'FLUTKIT',
+                                'THE ZEN',
                                 style: AppTheme.getTextStyle(
                                     themeData.textTheme.bodyText1,
                                     fontWeight: 700,

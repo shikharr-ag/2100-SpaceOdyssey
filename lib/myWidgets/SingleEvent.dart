@@ -1,5 +1,5 @@
-import 'package:flutkit/apps/event/EventFullApp.dart';
-import 'package:flutkit/apps/event/EventSingleEventScreen.dart';
+import 'package:flutkit/screens/EventFullApp.dart';
+import 'package:flutkit/screens/EventSingleEventScreen.dart';
 import 'package:flutkit/style/MyCard.dart';
 import 'package:flutkit/style/MyContainer.dart';
 import 'package:flutkit/utils/SizeConfig.dart';
@@ -30,16 +30,25 @@ class SingleEvent extends StatelessWidget {
       onTap: () {
         if (key == ValueKey('Guide'))
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => EventFullApp(
-                        index: 3,
-                      )));
+            context,
+            MaterialPageRoute(
+              builder: (context) => EventFullApp(
+                index: 2,
+              ),
+            ),
+          );
         else
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => EventSingleEventScreen()));
+                  builder: (context) => EventSingleEventScreen(
+                      key: key,
+                      image: image,
+                      date: date,
+                      month: month,
+                      title: title,
+                      subject: subject,
+                      time: time)));
       },
       child: MyContainer.bordered(
         clipBehavior: Clip.hardEdge,
