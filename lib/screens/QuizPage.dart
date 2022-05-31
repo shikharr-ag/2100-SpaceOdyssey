@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../AppTheme.dart';
 import '../myWidgets/quiz.dart';
 import '../myWidgets/result.dart';
+import '../utils/constants.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({Key? key}) : super(key: key);
@@ -19,50 +21,54 @@ class _QuizPageState extends State<QuizPage> {
   final _questions = const [
     {
       'questionText':
-          'What is the answer of ("1" + "1"), and what is the response of (1+1) ?',
+          'How soon after you wake up do you smoke your first cigarette ?',
       'answers': [
-        {'text': '"2", 2', 'score': 0},
-        {'text': '"11", 11', 'score': 0},
-        {'text': '"11", 2', 'score': 1},
-        {'text': '"2", 11', 'score': 0},
+        {'text': 'I don\'t smoke', 'score': -1},
+        {'text': 'Within 5 minutes', 'score': 3},
+        {'text': '5-30 minutes', 'score': 2},
+        {'text': '31-60 minutes', 'score': 1},
+        {'text': 'After 60 minutes', 'score': 0},
       ],
     },
     {
       'questionText':
-          'Just now, a close friend of yours is reported missing. What will be your emotion?',
+          'Do you find it difficult not to smoke in places where you shouln\'t such as in temple or in a movie, at the library, on a bus , in a hospital etc. ?',
       'answers': [
-        {'text': 'Happy', 'score': 3},
-        {'text': 'Excited', 'score': 0},
-        {'text': 'Tensed', 'score': 1},
-        {'text': 'Long term depression', 'score': 0},
+        {'text': 'Yes', 'score': 1},
+        {'text': 'No', 'score': 0},
       ],
     },
     {
-      'questionText': 'What is always in front of you but can\'t be seen?',
+      'questionText': 'Which cigarette would you most hate to give up ?',
       'answers': [
-        {'text': 'The wall', 'score': 0},
-        {'text': 'The future ', 'score': 1},
-        {'text': 'AI', 'score': 0},
-        {'text': 'The past', 'score': 0},
+        {'text': 'The first one in the morning', 'score': 1},
+        {'text': 'After class or exams', 'score': 2},
+        {'text': 'Any other', 'score': 0},
       ],
     },
     {
-      'questionText': 'A child is alone and is crying. What will you do first?',
+      'questionText': 'How many cigarettes do you smoke each day ?',
       'answers': [
-        {'text': 'Pick him up and console him', 'score': 1},
-        {'text': 'Give him medicines', 'score': 0},
-        {'text': 'Spank him ', 'score': 0},
-        {'text': 'Ignore him as it is none of your business', 'score': 0},
+        {'text': '5 or fewer', 'score': 1},
+        {'text': '6 - 10', 'score': 2},
+        {'text': '10 - 15', 'score': 3},
+        {'text': '15 - more', 'score': 4},
       ],
     },
     {
       'questionText':
-          'A student copies and gets the first rank in a test. You are the head-teacher, and you know that the student has copied. What will you do?',
+          'Do you smoke more during the first few hours after waking up than during the rest of the day ?',
       'answers': [
-        {'text': 'Call him and educate him', 'score': 1},
-        {'text': 'Congratulate him', 'score': 0},
-        {'text': 'Encourage him to do such things', 'score': 0},
-        {'text': 'Kill him as he did a wrong thing', 'score': 0},
+        {'text': 'Yes', 'score': 1},
+        {'text': 'No', 'score': 0},
+      ],
+    },
+    {
+      'questionText':
+          'Do you still smoke if you are so sick that you are in bed most of the day, or if you have cold or diffculty breathing ?',
+      'answers': [
+        {'text': 'Yes', 'score': 1},
+        {'text': 'No', 'score': 0},
       ],
     },
   ];
@@ -91,7 +97,10 @@ class _QuizPageState extends State<QuizPage> {
     _totalScore += score;
 
     setState(() {
-      _questionIndex = _questionIndex + 1;
+      if (_totalScore >= 0)
+        _questionIndex = _questionIndex + 1;
+      else
+        _questionIndex = _questions.length;
     });
     print(_questionIndex);
     if (_questionIndex < _questions.length) {
@@ -113,33 +122,39 @@ class _QuizPageState extends State<QuizPage> {
         : quizTaken
             ? Container(
                 decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(
-                          'assets/new_images/planet-sphere.jpg',
-                        ),
-                        fit: BoxFit.fill)),
+                    gradient: LinearGradient(colors: Constants.nccColors)
+                    // image: DecorationImage(
+                    //     image: AssetImage('assets/new_images/Hologram.png'),
+                    //     fit: BoxFit.fill),
+                    ),
                 child: Center(
-                  child: Text(
-                    'You have already taken the self assessment.\nOfficials will get in contact with you soon.',
-                    style: AppTheme.getTextStyle(
-                        Theme.of(context).textTheme.bodyText1,
-                        color: Colors.white,
-                        fontSize: 32,
-                        fontWeight: 600),
+                  child: TextButton(
+                    child: Text(
+                      'To learn more about self analysing your nicotine dependence, click here !',
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.white),
+                    ),
+                    onPressed: () async {
+                      launchUrlString(Constants.smokingUrl).then(
+                        (value) => print(value),
+                      );
+                    },
                   ),
-                ),
-              )
+                ))
             : _questionIndex < _questions.length
                 ? Container(
                     height: MediaQuery.of(context).size.height,
                     width: double.infinity,
                     padding: const EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              'assets/new_images/planet-sphere.jpg',
-                            ),
-                            fit: BoxFit.fill)),
+                        gradient: LinearGradient(colors: Constants.nccColors)
+                        // image: DecorationImage(
+                        //     image: AssetImage(
+                        //       'assets/new_images/planet-sphere.jpg',
+                        //     ),
+                        //     fit: BoxFit.fill)
+                        ),
                     child: Quiz(
                       answerQuestion: _answerQuestion,
                       questionIndex: _questionIndex,

@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutkit/myModels/content.dart';
 import 'package:flutkit/style/MyCol.dart';
 import 'package:flutkit/style/MyContainer.dart';
@@ -6,23 +5,24 @@ import 'package:flutkit/style/MyRow.dart';
 import 'package:flutkit/style/ScreenMedia.dart';
 
 import 'package:flutkit/utils/SizeConfig.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import '../../AppNotifier.dart';
 import '../../AppTheme.dart';
 
 class EventSingleEventScreen extends StatefulWidget {
-  final String image, date, month, title, subject, time;
+  final String image, date, month, title, subject, time, link;
   EventSingleEventScreen({
     Key? key,
     required this.image,
-    required this.date,
-    required this.month,
+    this.date = '31',
+    this.month = 'May',
     required this.title,
     required this.subject,
     required this.time,
+    required this.link,
   }) : super(key: key);
   @override
   _EventSingleEventScreenState createState() => _EventSingleEventScreenState();
@@ -68,10 +68,13 @@ class _EventSingleEventScreenState extends State<EventSingleEventScreen> {
                           Container(
                             child: Stack(
                               children: [
-                                Image(
-                                  image: AssetImage(widget.image),
-                                  width: MediaQuery.of(context).size.width,
-                                  fit: BoxFit.fill,
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Image(
+                                    image: AssetImage(widget.image),
+                                    width: 300,
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                                 Positioned(
                                   child: Container(
@@ -154,7 +157,7 @@ class _EventSingleEventScreenState extends State<EventSingleEventScreen> {
                                             Text(
                                               widget.date +
                                                   " ${widget.month}" +
-                                                  " 2100",
+                                                  " 2022",
                                               style: AppTheme.getTextStyle(
                                                   themeData.textTheme.caption,
                                                   fontWeight: 600,
@@ -191,7 +194,7 @@ class _EventSingleEventScreenState extends State<EventSingleEventScreen> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(8))),
                                       child: Icon(
-                                        MdiIcons.mapMarkerOutline,
+                                        MdiIcons.read,
                                         size: 18,
                                         color: themeData.colorScheme.primary,
                                       ),
@@ -203,13 +206,18 @@ class _EventSingleEventScreenState extends State<EventSingleEventScreen> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              "Guardians HQ",
-                                              style: AppTheme.getTextStyle(
-                                                  themeData.textTheme.caption,
-                                                  fontWeight: 600,
-                                                  color: themeData.colorScheme
-                                                      .onBackground),
+                                            TextButton(
+                                              child: Text(
+                                                'Read more..',
+                                                style: AppTheme.getTextStyle(
+                                                    themeData.textTheme.caption,
+                                                    fontWeight: 600,
+                                                    color: themeData.colorScheme
+                                                        .onBackground),
+                                              ),
+                                              onPressed: () {
+                                                launchUrlString(widget.link);
+                                              },
                                             ),
                                           ],
                                         ),
@@ -230,63 +238,19 @@ class _EventSingleEventScreenState extends State<EventSingleEventScreen> {
                                 Spacing.height(16),
                                 if (widget.key == ValueKey('ai'))
                                   Content().aiContent(context),
-                                if (widget.key == ValueKey('covid'))
+                                if (widget.key == ValueKey('covid')) ...[
                                   Content().covidContent(context),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  ConstrainedBox(
+                                      constraints: BoxConstraints(
+                                          maxHeight: 200, maxWidth: 200),
+                                      child: Image.asset(
+                                          'assets/new_images/cig_effects.png')),
+                                ],
                                 if (widget.key == ValueKey('wepDev'))
                                   Content().warContent(context),
-                                if (widget.key == ValueKey('weapons'))
-                                  Content().weaponsContent(context),
-                                if (widget.key == ValueKey('weapons'))
-                                  Spacing.height(16),
-                                if (widget.key == ValueKey('weapons'))
-                                  Text(
-                                    'Images',
-                                    style: AppTheme.getTextStyle(
-                                        themeData.textTheme.headline5,
-                                        fontWeight: 700,
-                                        color:
-                                            themeData.colorScheme.onBackground),
-                                  ),
-                                if (widget.key == ValueKey('weapons'))
-                                  Spacing.height(16),
-                                if (widget.key == ValueKey('weapons'))
-                                  CarouselSlider(
-                                    options: CarouselOptions(
-                                        autoPlay: true, height: 200),
-                                    items: [0, 1, 2, 3].map((i) {
-                                      return Builder(
-                                        builder: (BuildContext context) {
-                                          return Container(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            margin: EdgeInsets.symmetric(
-                                                horizontal: 5.0),
-                                            padding: EdgeInsets.all(8.0),
-                                            decoration: BoxDecoration(
-                                              border: Border.all(),
-                                              borderRadius:
-                                                  BorderRadius.circular(15.0),
-                                              image: DecorationImage(
-                                                  image: AssetImage(
-                                                      'assets/new_images/${imageAssets[i]}'),
-                                                  fit: BoxFit.fill),
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    }).toList(),
-                                  ),
-                                if (widget.key == ValueKey('climate'))
-                                  Content().climateContent(context),
-                                if (widget.key == ValueKey('weapon'))
-                                  Content().fightContent(context),
-                                if (widget.key == ValueKey('soc'))
-                                  Content().popContent(context),
-                                if (widget.key == ValueKey('csoc'))
-                                  Content().survivalContent(context),
-                                if (widget.key == ValueKey('ecoDev'))
-                                  Content().ecoDevContent(context),
                               ],
                             ),
                           ),

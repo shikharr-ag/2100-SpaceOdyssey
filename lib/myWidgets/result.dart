@@ -1,4 +1,6 @@
+import 'package:flutkit/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class Result extends StatelessWidget {
   final int resultScore;
@@ -8,25 +10,42 @@ class Result extends StatelessWidget {
 
   String get resultPhrase {
     String resultText;
-    if (resultScore >= 4) {
-      resultText = 'You are completely safe from the Z.E.U.S Virus.';
-    } else if (resultScore > 2) {
-      resultText =
-          'There is a possibility you have been affected by the Z.E.U.S Virus.\nHead to the nearest emergency room.';
-    } else
-      resultText =
-          'You are affected by the Z.E.U.S Virus.\nOfficials are converging on your location to fix you.';
+    if (resultScore >= 7) {
+      resultText = 'You are highly dependent on Nicotine.';
+    } else if (resultScore < 7 && resultScore >= 4) {
+      resultText = 'You are moderately dependent on Nicotine';
+    } else if (resultScore > 0)
+      resultText = 'You are minimally dependent on Nicotine.';
+    else
+      resultText = 'You are Healthy and have no Nicotine dependence';
     return resultText;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        resultPhrase,
-        style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-        textAlign: TextAlign.center,
-      ),
+    return Column(
+      children: [
+        Text(
+          resultPhrase,
+          style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        TextButton(
+          child: Text(
+            ' For a more accurate understanding of your situation head to this website.',
+            style: TextStyle(
+                decoration: TextDecoration.underline, color: Colors.blue),
+          ),
+          onPressed: () async {
+            launchUrlString(Constants.smokingUrl).then(
+              (value) => print(value),
+            );
+          },
+        ),
+      ],
     );
   }
 }

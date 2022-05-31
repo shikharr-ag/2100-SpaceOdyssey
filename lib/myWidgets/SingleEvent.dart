@@ -9,18 +9,19 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import '../AppTheme.dart';
 
 class SingleEvent extends StatelessWidget {
-  final String image, date, month, title, subject, time;
+  final String image, date, month, title, subject, time, link;
   final double width;
 
   const SingleEvent(
       {Key? key,
       required this.image,
-      required this.date,
-      required this.month,
+      this.date = '31',
+      this.month = 'May',
       required this.title,
       required this.subject,
       required this.time,
-      required this.width})
+      required this.width,
+      required this.link})
       : super(key: key);
 
   @override
@@ -39,16 +40,20 @@ class SingleEvent extends StatelessWidget {
           );
         else
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => EventSingleEventScreen(
-                      key: key,
-                      image: image,
-                      date: date,
-                      month: month,
-                      title: title,
-                      subject: subject,
-                      time: time)));
+            context,
+            MaterialPageRoute(
+              builder: (context) => EventSingleEventScreen(
+                key: key,
+                image: image,
+                date: date,
+                month: month,
+                title: title,
+                subject: subject,
+                time: time,
+                link: link,
+              ),
+            ),
+          );
       },
       child: MyContainer.bordered(
         clipBehavior: Clip.hardEdge,

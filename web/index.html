@@ -1,12 +1,22 @@
-lib<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>flutkit</title>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKd8ZjV1tt3JcoAzrmmbGhocu8Jv0lQp0"></script>
+  <title>6KAR NAVAL NCC</title>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKd8ZjV1tt3JcoAzrmmbGhocu8Jv0lQp0"></script> -->
+  <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
 
+  <script src="splash/splash.js"></script>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  <link rel="stylesheet" type="text/css" href="splash/style.css">
 </head>
 <body>
+  <picture id="splash">
+    <source srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x" media="(prefers-color-scheme: light)">
+    <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
+    <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt=""/>
+  </picture>
+  <!-- <img src="assets/new_images/ncc_nobg.png" class="center" /> -->
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>

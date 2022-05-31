@@ -41,6 +41,9 @@ dependencies:
   rive_loading: ^0.1.0
   flutter_svg: ^0.22.0
   carousel_slider: ^4.0.0
+  url_launcher: ^6.1.2
+  footer: ^0.0.4
+  flutter_native_splash: ^2.1.6
 
 
 dev_dependencies:
@@ -60,9 +63,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   
     - assets/new_images/
-    - assets/new_images/Hologram.png
+    
+
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -89,3 +93,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_native_splash:
+    color: "#ffffff"
+    # background_image : "assets/new_images/bg.png"
+    image : "assets/new_images/nccimg.png"
+    web: true
+    

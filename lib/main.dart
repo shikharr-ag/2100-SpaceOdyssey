@@ -1,4 +1,5 @@
 import 'package:flutkit/screens/EventFullApp.dart';
+import 'package:flutkit/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'AppNotifier.dart';

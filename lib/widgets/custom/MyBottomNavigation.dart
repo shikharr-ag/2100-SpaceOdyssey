@@ -174,6 +174,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation>
         child: _currentIndex == i
             ? Column(
                 mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(
                     activeIcons![i],
@@ -182,13 +183,15 @@ class _MyBottomNavigationState extends State<MyBottomNavigation>
                   ),
                   Spacing.height(4),
                   titles != null
-                      ? Text(
-                          titles![i],
-                          style: AppTheme.getTextStyle(
-                              themeData.textTheme.caption,
-                              color:
-                                  activeColor ?? themeData.colorScheme.primary,
-                              fontWeight: 600),
+                      ? FittedBox(
+                          child: Text(
+                            titles![i],
+                            style: AppTheme.getTextStyle(
+                                themeData.textTheme.caption!,
+                                color: activeColor ??
+                                    themeData.colorScheme.primary,
+                                fontWeight: 600),
+                          ),
                         )
                       : SizedBox()
                 ],
@@ -365,7 +368,7 @@ class _NavigationRailHeader extends StatelessWidget {
                           Spacing.width(2),
                           Image(
                             image: AssetImage(
-                              'assets/new_images/logo.png',
+                              'assets/new_images/ncc_nobg.png',
                             ),
                             width: 24,
                           ),
@@ -381,7 +384,7 @@ class _NavigationRailHeader extends StatelessWidget {
                             child: Opacity(
                               opacity: animation.value,
                               child: Text(
-                                'THE ZEN',
+                                'NCC',
                                 style: AppTheme.getTextStyle(
                                     themeData.textTheme.bodyText1,
                                     fontWeight: 700,
