@@ -14,11 +14,11 @@ class EconomicBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Following artworks / posters were made by our cadets",
-          style: AppTheme.getTextStyle(themeData.textTheme.subtitle1,
-              fontWeight: 700, color: Colors.white),
-        ),
+        // Text(
+        //   "",
+        //   style: AppTheme.getTextStyle(themeData.textTheme.subtitle1,
+        //       fontWeight: 700, color: Colors.white),
+        // ),
         Spacing.height(16),
         ConstrainedBox(
           constraints: BoxConstraints(
@@ -43,24 +43,29 @@ class EconomicBody extends StatelessWidget {
                       actions: null,
                       titlePadding: EdgeInsets.zero,
                       contentPadding: EdgeInsets.zero,
-                      content: Stack(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              gradient:
-                                  LinearGradient(colors: Constants.triColors),
-                              borderRadius: BorderRadius.circular(20.0),
+                      content: Center(
+                        child: Stack(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                gradient:
+                                    LinearGradient(colors: Constants.triColors),
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
-                              child: Image.asset(
-                                  'assets/new_images/poster${i + 1}.jpeg'),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: Image.asset(
+                                      'assets/new_images/poster${i + 1}.jpeg'),
+                                ),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );

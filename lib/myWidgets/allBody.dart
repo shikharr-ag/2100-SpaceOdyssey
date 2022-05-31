@@ -109,7 +109,7 @@ class AllBody extends StatelessWidget {
             ],
           ),
         ),
-        Spacing.height(16),
+        Spacing.height(30),
         Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -167,19 +167,25 @@ class AllBody extends StatelessWidget {
                   ],
                 ),
               ),
-              Text(
-                'Copyright ©2022, All Rights Reserved. 6KAR NAVAL NCC ( MIT SUB UNIT )',
-                style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 12.0,
-                    color: Colors.white),
+              Spacing.height(10),
+              FittedBox(
+                child: Text(
+                  'Copyright ©2022, All Rights Reserved. 6KAR NAVAL NCC ( MIT SUB UNIT )',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                      fontSize: 12.0,
+                      color: Colors.white),
+                ),
               ),
-              Text(
-                'Made by Cadet Shikhar Agarwal',
-                style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 12.0,
-                    color: Colors.white),
+              Spacing.height(10),
+              FittedBox(
+                child: Text(
+                  'Made by Cadet Shikhar Agarwal',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                      fontSize: 12.0,
+                      color: Colors.white),
+                ),
               ),
             ]),
       ],
