@@ -31,7 +31,7 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
   late CustomAppTheme customAppTheme;
   bool isFirst = true;
   int? selectedCategory = 0;
-  bool isLoading = true;
+  // bool isLoading = true;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -39,71 +39,71 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
     super.initState();
 
     print("Called init event home");
-    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
-      Future.sync(() async {
-        SharedPreferences sharedPreferences =
-            await SharedPreferences.getInstance();
-        if (sharedPreferences.containsKey('first')) {
-          isFirst = sharedPreferences.getBool('first')!;
-        } else
-          isFirst = true;
-        sharedPreferences.setBool('first', false);
-      }).whenComplete(() {
-        setState(() {
-          isLoading = false;
-        });
-        if (isFirst) {
-          showModalBottomSheet(
-            context: context,
-            builder: (context) => Container(
-              height: 250,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15.0),
-                    topRight: Radius.circular(15.0)),
-                color: Colors.white,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Spacing.height(20.0),
-                  Text(
-                    'Hi , please take the Nicotine Dependence Self Assessment',
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
-                  Spacing.height(10.0),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'This self assessment will determine the state of your Nicotine Dependence and help you take your first step towards quitting smoking.',
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                    ),
-                    child: const Text('Proceed'),
-                    onPressed: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EventFullApp(index: 1),
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    child: const Text('Skip'),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                ],
-              ),
-            ),
-          );
-        }
-      });
-    });
+    // SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
+    //   Future.sync(() async {
+    //     SharedPreferences sharedPreferences =
+    //         await SharedPreferences.getInstance();
+    //     if (sharedPreferences.containsKey('first')) {
+    //       isFirst = sharedPreferences.getBool('first')!;
+    //     } else
+    //       isFirst = true;
+    //     sharedPreferences.setBool('first', false);
+    //   }).whenComplete(() {
+    //     setState(() {
+    //       isLoading = false;
+    //     });
+    //     if (isFirst) {
+    //       showModalBottomSheet(
+    //         context: context,
+    //         builder: (context) => Container(
+    //           height: 250,
+    //           decoration: BoxDecoration(
+    //             borderRadius: BorderRadius.only(
+    //                 topLeft: Radius.circular(15.0),
+    //                 topRight: Radius.circular(15.0)),
+    //             color: Colors.white,
+    //           ),
+    //           child: Column(
+    //             mainAxisSize: MainAxisSize.min,
+    //             children: <Widget>[
+    //               Spacing.height(20.0),
+    //               Text(
+    //                 'Hi , please take the Nicotine Dependence Self Assessment',
+    //                 style: Theme.of(context).textTheme.headline5,
+    //               ),
+    //               Spacing.height(10.0),
+    //               Padding(
+    //                 padding: const EdgeInsets.all(8.0),
+    //                 child: Text(
+    //                   'This self assessment will determine the state of your Nicotine Dependence and help you take your first step towards quitting smoking.',
+    //                   style: Theme.of(context).textTheme.bodyText1,
+    //                 ),
+    //               ),
+    //               ElevatedButton(
+    //                 style: ElevatedButton.styleFrom(
+    //                   shape: RoundedRectangleBorder(
+    //                     borderRadius: BorderRadius.circular(12.0),
+    //                   ),
+    //                 ),
+    //                 child: const Text('Proceed'),
+    //                 onPressed: () => Navigator.pushReplacement(
+    //                   context,
+    //                   MaterialPageRoute(
+    //                     builder: (context) => EventFullApp(index: 1),
+    //                   ),
+    //                 ),
+    //               ),
+    //               TextButton(
+    //                 child: const Text('Skip'),
+    //                 onPressed: () => Navigator.pop(context),
+    //               ),
+    //             ],
+    //           ),
+    //         ),
+    //       );
+    //     }
+    //   });
+    // });
   }
 
   Widget build(BuildContext context) {
@@ -111,198 +111,196 @@ class _EventHomeScreenState extends State<EventHomeScreen> {
     return Consumer<AppNotifier>(
       builder: (BuildContext context, AppNotifier value, Widget? child) {
         customAppTheme = AppTheme.getCustomAppTheme(value.themeMode());
-        return isLoading
-            ? CircularProgressIndicator()
-            : Scaffold(
-                key: _scaffoldKey,
-                resizeToAvoidBottomInset: true,
-                body:
-                    // FooterView(
-                    //   flex: 10,
-                    //   footer: Footer(
-                    //     padding: EdgeInsets.zero,
-                    //     child: Container(
-                    //       padding: EdgeInsets.zero,
-                    //       margin: MediaQuery.of(context).viewPadding,
-                    //       decoration: BoxDecoration(
-                    //           gradient: LinearGradient(colors: Constants.nccColors)
-                    //           // image: DecorationImage(
-                    //           //     image: AssetImage('assets/new_images/Hologram.png'),
-                    //           //     fit: BoxFit.fill),
-                    //           ),
-                    // child: new Column(
-                    //     crossAxisAlignment: CrossAxisAlignment.center,
-                    //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    //     children: <Widget>[
-                    //       new Center(
-                    //         child: new Row(
-                    //           mainAxisAlignment:
-                    //               MainAxisAlignment.spaceEvenly,
-                    //           children: <Widget>[
-                    //             new Container(
-                    //               height: 45.0,
-                    //               width: 45.0,
-                    //               child: Center(
-                    //                 child: Card(
-                    //                   elevation: 5.0,
-                    //                   shape: RoundedRectangleBorder(
-                    //                     borderRadius: BorderRadius.circular(
-                    //                         25.0), // half of height and width of Image
-                    //                   ),
-                    //                   child: IconButton(
-                    //                     icon: new Icon(
-                    //                       Icons.audiotrack,
-                    //                       size: 20.0,
-                    //                     ),
-                    //                     color: Color(0xFF162A49),
-                    //                     onPressed: () {
-                    //                       launchUrlString(
-                    //                           Constants.nccSongLink);
-                    //                     },
-                    //                   ),
-                    //                 ),
-                    //               ),
-                    //             ),
-                    //             new Container(
-                    //               height: 45.0,
-                    //               width: 45.0,
-                    //               child: Center(
-                    //                 child: Card(
-                    //                   elevation: 5.0,
-                    //                   shape: RoundedRectangleBorder(
-                    //                     borderRadius: BorderRadius.circular(
-                    //                         25.0), // half of height and width of Image
-                    //                   ),
-                    //                   child: IconButton(
-                    //                     icon: new Icon(
-                    //                       MdiIcons.instagram,
-                    //                       size: 20.0,
-                    //                     ),
-                    //                     color: Color(0xFF162A49),
-                    //                     onPressed: () {
-                    //                       launchUrlString(
-                    //                           Constants.instaLink);
-                    //                     },
-                    //                   ),
-                    //                 ),
-                    //               ),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //       Text(
-                    //         'Copyright ©2022, All Rights Reserved. 6KAR NAVAL NCC ( MIT SUB UNIT )',
-                    //         style: TextStyle(
-                    //             fontWeight: FontWeight.w300,
-                    //             fontSize: 12.0,
-                    //             color: Colors.white),
-                    //       ),
-                    //       Text(
-                    //         'Made by Cadet Shikhar Agarwal',
-                    //         style: TextStyle(
-                    //             fontWeight: FontWeight.w300,
-                    //             fontSize: 12.0,
-                    //             color: Colors.white),
-                    //       ),
-                    //     ]),
-                    //   ),
-                    // ),
-                    // children:
-                    // [
-                    Container(
-                  height: MediaQuery.of(context).size.height - 60,
-                  // color: customAppTheme.bgLayer1,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: Constants.nccColors)
-                      // image: DecorationImage(
-                      //     image: AssetImage('assets/new_images/Hologram.png'),
-                      //     fit: BoxFit.fill),
-                      ),
-                  child: ListView(
-                    padding: Spacing.fromLTRB(24, 16, 24, 0),
-                    children: [
-                      Row(
+        return Scaffold(
+          key: _scaffoldKey,
+          resizeToAvoidBottomInset: true,
+          body:
+              // FooterView(
+              //   flex: 10,
+              //   footer: Footer(
+              //     padding: EdgeInsets.zero,
+              //     child: Container(
+              //       padding: EdgeInsets.zero,
+              //       margin: MediaQuery.of(context).viewPadding,
+              //       decoration: BoxDecoration(
+              //           gradient: LinearGradient(colors: Constants.nccColors)
+              //           // image: DecorationImage(
+              //           //     image: AssetImage('assets/new_images/Hologram.png'),
+              //           //     fit: BoxFit.fill),
+              //           ),
+              // child: new Column(
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //     children: <Widget>[
+              //       new Center(
+              //         child: new Row(
+              //           mainAxisAlignment:
+              //               MainAxisAlignment.spaceEvenly,
+              //           children: <Widget>[
+              //             new Container(
+              //               height: 45.0,
+              //               width: 45.0,
+              //               child: Center(
+              //                 child: Card(
+              //                   elevation: 5.0,
+              //                   shape: RoundedRectangleBorder(
+              //                     borderRadius: BorderRadius.circular(
+              //                         25.0), // half of height and width of Image
+              //                   ),
+              //                   child: IconButton(
+              //                     icon: new Icon(
+              //                       Icons.audiotrack,
+              //                       size: 20.0,
+              //                     ),
+              //                     color: Color(0xFF162A49),
+              //                     onPressed: () {
+              //                       launchUrlString(
+              //                           Constants.nccSongLink);
+              //                     },
+              //                   ),
+              //                 ),
+              //               ),
+              //             ),
+              //             new Container(
+              //               height: 45.0,
+              //               width: 45.0,
+              //               child: Center(
+              //                 child: Card(
+              //                   elevation: 5.0,
+              //                   shape: RoundedRectangleBorder(
+              //                     borderRadius: BorderRadius.circular(
+              //                         25.0), // half of height and width of Image
+              //                   ),
+              //                   child: IconButton(
+              //                     icon: new Icon(
+              //                       MdiIcons.instagram,
+              //                       size: 20.0,
+              //                     ),
+              //                     color: Color(0xFF162A49),
+              //                     onPressed: () {
+              //                       launchUrlString(
+              //                           Constants.instaLink);
+              //                     },
+              //                   ),
+              //                 ),
+              //               ),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //       Text(
+              //         'Copyright ©2022, All Rights Reserved. 6KAR NAVAL NCC ( MIT SUB UNIT )',
+              //         style: TextStyle(
+              //             fontWeight: FontWeight.w300,
+              //             fontSize: 12.0,
+              //             color: Colors.white),
+              //       ),
+              //       Text(
+              //         'Made by Cadet Shikhar Agarwal',
+              //         style: TextStyle(
+              //             fontWeight: FontWeight.w300,
+              //             fontSize: 12.0,
+              //             color: Colors.white),
+              //       ),
+              //     ]),
+              //   ),
+              // ),
+              // children:
+              // [
+              Container(
+            height: MediaQuery.of(context).size.height,
+            // color: customAppTheme.bgLayer1,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(colors: Constants.nccColors)
+                // image: DecorationImage(
+                //     image: AssetImage('assets/new_images/Hologram.png'),
+                //     fit: BoxFit.fill),
+                ),
+            child: ListView(
+              padding: Spacing.fromLTRB(24, 16, 24, 0),
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Welcome, Youth.",
-                                  style: AppTheme.getTextStyle(
-                                      themeData.textTheme.bodyText2,
-                                      fontWeight: 500,
-                                      letterSpacing: 0,
-                                      color: Colors.white),
-                                ),
-                                Container(
-                                  child: Text(
-                                    "Lets say no to Tobacco !",
-                                    style: AppTheme.getTextStyle(
-                                        themeData.textTheme.headline5,
-                                        fontSize: 24,
-                                        fontWeight: 700,
-                                        letterSpacing: -0.3,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                              ],
+                          Text(
+                            "Welcome, Youth.",
+                            style: AppTheme.getTextStyle(
+                                themeData.textTheme.bodyText2,
+                                fontWeight: 500,
+                                letterSpacing: 0,
+                                color: Colors.white),
+                          ),
+                          Container(
+                            child: Text(
+                              "JAI HIND",
+                              style: AppTheme.getTextStyle(
+                                  themeData.textTheme.headline5,
+                                  fontSize: 24,
+                                  fontWeight: 700,
+                                  letterSpacing: -0.3,
+                                  color: Colors.white),
                             ),
                           ),
                         ],
                       ),
-                      Spacing.height(16),
+                    ),
+                  ],
+                ),
+                Spacing.height(16),
 
-                      Container(
-                        padding: Spacing.y(16),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              singleCategory(
-                                  title: "Articles",
-                                  iconData: MdiIcons.ballotOutline,
-                                  index: 0),
-                              Spacing.width(16),
-                              singleCategory(
-                                  title: "Gallery",
-                                  iconData: MdiIcons.viewGallery,
-                                  index: 1),
-                              // Spacing.width(16),
-                              // singleCategory(
-                              //     title: "Societal Guidelines",
-                              //     iconData: MdiIcons.naturePeople,
-                              //     index: 2),
-                              // Spacing.width(16),
-                              // singleCategory(
-                              //     title: "Warfare",
-                              //     iconData: MdiIcons.sword,
-                              //     index: 3),
-                              // Spacing.width(16),
-                              // singleCategory(
-                              //     title: "Climate",
-                              //     iconData: MdiIcons.weatherCloudy,
-                              //     index: 4),
-                            ],
-                          ),
-                        ),
-                      ),
-                      if (selectedCategory == 0)
-                        AllBody(
-                          isFirst: isFirst,
-                        ),
-                      if (selectedCategory == 1) EconomicBody(),
-                      // if (selectedCategory == 2) SocietyBody(),
-                      // if (selectedCategory == 3) WarfareBody(),
-                      // if (selectedCategory == 4) ClimateBody(),
-
-                      // if (selectedCategory == 0) AllBody(),
-                    ],
+                Container(
+                  padding: Spacing.y(16),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        singleCategory(
+                            title: "Articles",
+                            iconData: MdiIcons.ballotOutline,
+                            index: 0),
+                        Spacing.width(16),
+                        singleCategory(
+                            title: "Gallery",
+                            iconData: MdiIcons.viewGallery,
+                            index: 1),
+                        // Spacing.width(16),
+                        // singleCategory(
+                        //     title: "Societal Guidelines",
+                        //     iconData: MdiIcons.naturePeople,
+                        //     index: 2),
+                        // Spacing.width(16),
+                        // singleCategory(
+                        //     title: "Warfare",
+                        //     iconData: MdiIcons.sword,
+                        //     index: 3),
+                        // Spacing.width(16),
+                        // singleCategory(
+                        //     title: "Climate",
+                        //     iconData: MdiIcons.weatherCloudy,
+                        //     index: 4),
+                      ],
+                    ),
                   ),
                 ),
-                //],
-                //)
-              );
+                if (selectedCategory == 0)
+                  AllBody(
+                    isFirst: isFirst,
+                  ),
+                if (selectedCategory == 1) EconomicBody(),
+                // if (selectedCategory == 2) SocietyBody(),
+                // if (selectedCategory == 3) WarfareBody(),
+                // if (selectedCategory == 4) ClimateBody(),
+
+                // if (selectedCategory == 0) AllBody(),
+              ],
+            ),
+          ),
+          //],
+          //)
+        );
       },
     );
   }

@@ -240,17 +240,21 @@ class _EventSingleEventScreenState extends State<EventSingleEventScreen> {
                                   Content().aiContent(context),
                                 if (widget.key == ValueKey('covid')) ...[
                                   Content().covidContent(context),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                          maxHeight: 200, maxWidth: 200),
-                                      child: Image.asset(
-                                          'assets/new_images/cig_effects.png')),
+                                  // const SizedBox(
+                                  //   height: 20,
+                                  // ),
+                                  // ConstrainedBox(
+                                  //     constraints: BoxConstraints(
+                                  //         maxHeight: 200, maxWidth: 200),
+                                  //     child: Image.asset(
+                                  //         'assets/new_images/cig_effects.png')),
                                 ],
                                 if (widget.key == ValueKey('wepDev'))
                                   Content().warContent(context),
+                                if (widget.key == ValueKey('weapons'))
+                                  Content().navyContent(context),
+                                if (widget.key == ValueKey('climate'))
+                                  Content().climateContent(context),
                               ],
                             ),
                           ),

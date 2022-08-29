@@ -78,7 +78,7 @@ class _QuizPageState extends State<QuizPage> {
   @override
   void initState() {
     super.initState();
-    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       Future.sync(() async {
         SharedPreferences sharedPreferences =
             await SharedPreferences.getInstance();

@@ -22,4 +22,7 @@ class Constants with ChangeNotifier {
       'https://instagram.com/mit_navalncc?igshid=YmMyMTA2M2Y=';
   static const String nccSongLink =
       'https://www.youtube.com/watch?v=LVRBfHXcKzo';
+
+  static const String regiLink =
+      'https://docs.google.com/forms/d/e/1FAIpQLSeAADMHvRUqQ78es-JLfAlvQHa22T2XfubR3qPljpwBLqdsaw/viewform';
 }

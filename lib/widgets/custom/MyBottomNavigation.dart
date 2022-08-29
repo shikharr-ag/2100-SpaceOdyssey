@@ -276,6 +276,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation>
     return Scaffold(
       floatingActionButton: floatingActionButton,
       body: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           ValueListenableBuilder<bool>(
               valueListenable: _isExtended!,
@@ -293,10 +294,10 @@ class _MyBottomNavigationState extends State<MyBottomNavigation>
                         navigationBackground ?? customAppTheme.bgLayer1,
                     elevation: 10,
                     extended: _isExtended!.value,
-                    leading: _NavigationRailHeader(
-                      extended: _isExtended!,
-                      brandTextColor: brandTextColor,
-                    ),
+                    // leading: _NavigationRailHeader(
+                    //   extended: _isExtended!,
+                    //   brandTextColor: brandTextColor,
+                    // ),
                     selectedIndex: _currentIndex!,
                     onDestinationSelected: (int index) {
                       setState(() {
@@ -347,7 +348,8 @@ class _NavigationRailHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              Container(
+                color: Colors.blue,
                 height: 56,
                 child: Row(
                   children: [
@@ -365,11 +367,12 @@ class _NavigationRailHeader extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          Spacing.width(2),
+                          // Spacing.width(2),
                           Image(
                             image: AssetImage(
                               'assets/new_images/ncc_nobg.png',
                             ),
+                            fit: BoxFit.scaleDown,
                             width: 24,
                           ),
                           // SvgPicture.asset(

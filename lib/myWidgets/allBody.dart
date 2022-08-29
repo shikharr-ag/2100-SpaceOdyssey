@@ -55,56 +55,56 @@ class AllBody extends StatelessWidget {
             children: [
               SingleEvent(
                 key: ValueKey('ai'),
-                title: "Nicotine Withdrawal",
-                image: 'assets/new_images/nicotine.png',
-                subject:
-                    "A brief explanation on effects of Nicotine Withdrawal.",
+                title: "What is NCC ?",
+                image: 'assets/new_images/ncc_nobg.png',
+                subject: "A brief explanation about NCC.",
                 time: "3 mins read",
                 width: 200,
-                link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4542051/',
+                link: 'https://indiancc.nic.in/',
               ),
-              Spacing.width(16),
+              Spacing.width(10),
+              SingleEvent(
+                  key: ValueKey('weapons'),
+                  title: "The Naval Wing of NCC",
+                  image: 'assets/new_images/navy.png',
+                  subject: "A brief explanation about the Naval Wing of NCC",
+                  time: "4 mins read",
+                  link: '',
+                  width: 200),
+              Spacing.width(10),
               SingleEvent(
                 key: ValueKey('covid'),
-                title: "Health Effects of Tobacco",
-                image: 'assets/new_images/cig_eff.jpg',
-                subject: "A brief explanation on the effects of smoking.",
-                time: "2 mins read",
+                title: "NCC Examinations and Benefits",
+                image: 'new_images/benefits.png',
+                subject:
+                    "A brief explanation on the certificate examinations and benefits of NCC.",
+                time: "3 mins read",
                 width: 200,
-                link:
-                    'https://www.who.int/news-room/fact-sheets/detail/tobacco',
+                link: 'https://indiancc.nic.in/eligibility-certificate-exams/',
               ),
-              Spacing.width(16),
+              Spacing.width(10),
               SingleEvent(
                 key: ValueKey('wepDev'),
-                title: "Facts about Nicotine",
-                image: 'assets/new_images/nico_2.jpeg',
-                subject: "Some mind boggling facts about Nicotine",
-                time: "4 mins read",
+                title: "Register Now",
+                image: 'new_images/regi.png',
+                subject:
+                    "Here you can find the registration form to be a part of the recruitment process for NCC",
+                time: "1 mins read",
                 width: 200,
                 link:
                     'https://www.verywellmind.com/nicotine-facts-you-should-know-2825019',
               ),
-              Spacing.width(16),
-              // SingleEvent(
-              //     key: ValueKey('weapons'),
-              //     title: "Weapons to fight the AI",
-              //     image: 'assets/new_images/wep.jpg',
-              //     subject:
-              //         "Warfare techniques developed to fight the uprising.",
-              //     time: "4 mins read",
-              //     link: '',
-              //     width: 200),
-              // Spacing.width(16),
-              // SingleEvent(
-              //     key: ValueKey('climate'),
-              //     title: "The COVID Effect",
-              //     image: 'assets/new_images/resp.png',
-              //     subject:
-              //         "A small description of how COVID changed the society.",
-              //     time: "2 mins read",
-              //     link: '',
-              //     width: 200),
+              Spacing.width(10),
+
+              SingleEvent(
+                  key: ValueKey('climate'),
+                  title: "Expectations from our Cadet",
+                  image: 'new_images/expectations.jpg',
+                  subject:
+                      "A small description of what we expect from our cadets.",
+                  time: "2 mins read",
+                  link: '',
+                  width: 200),
               // Spacing.width(16),
             ],
           ),

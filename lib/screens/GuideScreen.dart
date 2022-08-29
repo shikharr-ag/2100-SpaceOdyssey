@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutkit/utils/constants.dart';
 import 'package:flutkit/utils/gradient_text.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../AppTheme.dart';
 
@@ -25,32 +27,47 @@ class GuideScreen extends StatelessWidget {
             style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
                 color: Colors.white, fontWeight: 700),
           ),
-          TextSpan(
-            text: 'on this ',
-          ),
-          TextSpan(
-            text: 'World No-Tobacco Day,',
-            style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
-                color: Colors.white, fontWeight: 700),
-          ),
+          // TextSpan(
+          //   text: 'on this ',
+          // ),
+          // TextSpan(
+          //   text: 'World No-Tobacco Day,',
+          //   style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
+          //       color: Colors.white, fontWeight: 700),
+          // ),
           TextSpan(
               text:
-                  'have come up with this website where you may find different articles made by us on different harmful effects and facts about '
+                  'have come up with this website where you may find different articles made by us to introduce you to NCC and help you get a deeper understanding about '
               // ' We have displayed the most critical news under the headlines section on the homepage to give you a glimpse of how bad the scenario is. To get a structured approach to get to know things, we encourage you to go through each section in the given order starting from the headlines section. Else, you can also start from any unit according to your wish and scan the entire website.\n\n',
               // style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
           TextSpan(
-            text: 'Nicotine Addiction and Cigarette Smoking.',
+            text: 'Naval Wing Of NCC.',
             style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
                 color: Colors.white, fontWeight: 700),
           ),
           TextSpan(
               text:
-                  'Along with a medically proven Self Analysis Quiz that you can take to identify the state of your nicotine dependence.\n\n'),
+                  'If you are intrigued and want to become a part of this prestigious organisation '),
+          TextSpan(
+            recognizer: TapGestureRecognizer()
+              ..onTap = () async {
+                await launchUrlString(Constants.regiLink);
+              },
+            text: 'click here, to be redirected to the registration form.',
+            style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
+                color: Colors.blue, fontWeight: 700),
+          ),
+
+          TextSpan(text: ' As our motto goes, '),
+          TextSpan(
+            text: 'UNITY AND DISCIPLINE.',
+            style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,
+                color: Colors.white, fontWeight: 700),
+          ),
           TextSpan(
               text:
-                  'Let us all take an Oath and help ourselves and the YOUTH of our country.\n\n'),
-          TextSpan(text: 'Let us eradicate SMOKING.'),
+                  ' That it what we aim to inculcate in our cadets and help them become better, forward and leading citizens.'),
           // TextSpan(
           //   text: '!',
           //   style: AppTheme.getTextStyle(themeData.textTheme.bodyText1,

@@ -30,20 +30,20 @@ class _EventFullAppState extends State<EventFullApp>
         return MyBottomNavigation(
           icons: [
             MdiIcons.homeOutline,
-            MdiIcons.smokingOff,
+            // MdiIcons.smokingOff,
             MdiIcons.bookAccountOutline,
           ],
           activeIcons: [
             MdiIcons.home,
-            MdiIcons.smokingOff,
+            // MdiIcons.smokingOff,
             MdiIcons.bookAccount
           ],
           screens: [
             EventHomeScreen(),
-            QuizPage(),
+            // QuizPage(),
             GuideScreen(),
           ],
-          titles: ["Home", "Self Analysis", "Guide"],
+          titles: ["Home", "Guide"],
           color: themeData.colorScheme.onBackground,
           activeColor: themeData.colorScheme.primary,
           navigationBackground: customAppTheme.bgLayer1,
