@@ -75,7 +75,7 @@ class AllBody extends StatelessWidget {
               SingleEvent(
                 key: ValueKey('covid'),
                 title: "NCC Examinations and Benefits",
-                image: 'new_images/benefits.png',
+                image: 'assets/new_images/benefits.png',
                 subject:
                     "A brief explanation on the certificate examinations and benefits of NCC.",
                 time: "3 mins read",
@@ -86,7 +86,7 @@ class AllBody extends StatelessWidget {
               SingleEvent(
                 key: ValueKey('wepDev'),
                 title: "Register Now",
-                image: 'new_images/regi.png',
+                image: 'assets/new_images/regi.png',
                 subject:
                     "Here you can find the registration form to be a part of the recruitment process for NCC",
                 time: "1 mins read",
@@ -99,7 +99,7 @@ class AllBody extends StatelessWidget {
               SingleEvent(
                   key: ValueKey('climate'),
                   title: "Expectations from our Cadet",
-                  image: 'new_images/expectations.jpg',
+                  image: 'assets/new_images/expectations.jpg',
                   subject:
                       "A small description of what we expect from our cadets.",
                   time: "2 mins read",
